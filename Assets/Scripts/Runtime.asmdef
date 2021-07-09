@@ -5,7 +5,8 @@
         "Unity.InputSystem",
         "Cinemachine",
         "Unity.ProBuilder",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Slothsoft.UnityExtensions.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
