@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: Avatar_Default
   m_EditorClassIdentifier: 
   maxSpeed: 10
-  accelerationDuration: 0.125
+  smoothingTime: 0.125
+  jumpSpeed: 10
+  cameraSpeed: {x: 0.25, y: 0.25}
+  cameraSmoothing: 0.0625
+  cameraMinX: -120
+  cameraMaxX: 60

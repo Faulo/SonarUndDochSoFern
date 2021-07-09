@@ -1,19 +1,39 @@
+using Cinemachine;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace Runtime.Player {
     public class AvatarComponent : MonoBehaviour {
         [SerializeField, Expandable]
-        AvatarSettings settings = new AvatarSettings();
+        AvatarSettings settings = default;
         [SerializeField, Expandable]
         CharacterController character = default;
+        [SerializeField, Expandable]
+        Transform body = default;
+        [SerializeField, Expandable]
+        Transform eyes = default;
+        [SerializeField, Expandable]
+        Camera unityCamera = default;
+        [SerializeField, Expandable]
+        CinemachineVirtualCamera cinemachineCamera = default;
 
-        Avatar avatar;
+        AvatarInput input;
+        Movement avatar;
+        Look look;
+
         void Awake() {
-            avatar = new Avatar(settings, character);
+            input = new AvatarInput();
+            avatar = new Movement(settings, input.Player, character);
+            look = new Look(settings, input.Player, body, eyes);
         }
-
-        void Update() {
+        void OnEnable() {
+            input.Enable();
+        }
+        void OnDisable() {
+            input.Disable();
+        }
+        void FixedUpdate() {
+            look.Update(Time.deltaTime);
             avatar.Update(Time.deltaTime);
         }
     }
