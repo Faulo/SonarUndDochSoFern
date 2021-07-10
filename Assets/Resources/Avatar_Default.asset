@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3318bb5a926e253428534931580a4987, type: 3}
   m_Name: Avatar_Default
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 5
   smoothingTime: 0.125
-  jumpSpeed: 10
+  jumpStartSpeed: 12
+  jumpStopSpeed: 4
+  shortJumpInputDuration: 0.1
+  mediumJumpInputDuration: 0.2
+  shortJumpExecutionDuration: 0.1
+  mediumJumpExecutionDuration: 0.3
+  longJumpExecutionDuration: 0.4
   cameraSpeed: {x: 0.25, y: 0.25}
   cameraSmoothing: 0.0625
   cameraMinX: -120
