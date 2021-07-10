@@ -15,8 +15,8 @@ public class Blit : ScriptableRendererFeature {
         public int blitShaderPassIndex = 0;
         public FilterMode filterMode { get; set; }
 
-        private RenderTargetIdentifier source { get; set; }
-        private RenderTargetHandle destination { get; set; }
+        RenderTargetIdentifier source { get; set; }
+        RenderTargetHandle destination { get; set; }
 
         RenderTargetHandle m_TemporaryColorTexture;
         string m_ProfilerTag;
@@ -35,9 +35,9 @@ public class Blit : ScriptableRendererFeature {
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData) {
-            CommandBuffer cmd = CommandBufferPool.Get(m_ProfilerTag);
+            var cmd = CommandBufferPool.Get(m_ProfilerTag);
 
-            RenderTextureDescriptor opaqueDesc = renderingData.cameraData.cameraTargetDescriptor;
+            var opaqueDesc = renderingData.cameraData.cameraTargetDescriptor;
             opaqueDesc.depthBufferBits = 0;
 
             // Can't read and write to same color target, use a TemporaryRT
@@ -54,8 +54,9 @@ public class Blit : ScriptableRendererFeature {
         }
 
         public override void FrameCleanup(CommandBuffer cmd) {
-            if (destination == RenderTargetHandle.CameraTarget)
+            if (destination == RenderTargetHandle.CameraTarget) {
                 cmd.ReleaseTemporaryRT(m_TemporaryColorTexture.id);
+            }
         }
     }
 
@@ -80,7 +81,7 @@ public class Blit : ScriptableRendererFeature {
     BlitPass blitPass;
 
     public override void Create() {
-        var passIndex = settings.blitMaterial != null ? settings.blitMaterial.passCount - 1 : 1;
+        int passIndex = settings.blitMaterial != null ? settings.blitMaterial.passCount - 1 : 1;
         settings.blitMaterialPassIndex = Mathf.Clamp(settings.blitMaterialPassIndex, -1, passIndex);
         blitPass = new BlitPass(settings.Event, settings.blitMaterial, settings.blitMaterialPassIndex, name);
         m_RenderTextureHandle.Init(settings.textureId);

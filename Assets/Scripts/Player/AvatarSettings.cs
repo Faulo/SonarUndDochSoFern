@@ -47,5 +47,7 @@ namespace Runtime.Player {
         public ParticleSystem specialPrefab = default;
         [SerializeField]
         public Vector3 specialEjectSpeed = Vector3.forward;
+        [SerializeField, Range(0, 10000)]
+        public int sonarBurstCount = 1000;
     }
 }

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OverlapMat_Atztec
+  m_Name: HiddenGeometry_Atztec
   m_Shader: {fileID: -6465566751694194690, guid: 3ec545a570413744686a5fbd3440f5b0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -82,8 +82,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - AlphaThreshold: 0
+    - AlphaThreshold: 1
+    - Dithering: 1.5
+    - Dithing: 2
     - FresnelPower: 0
+    - Tiling: 10
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
