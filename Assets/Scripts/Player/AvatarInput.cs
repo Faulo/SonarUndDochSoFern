@@ -6,10 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Runtime.Player {
-    public class @AvatarInput : IInputActionCollection, IDisposable {
+namespace Runtime.Player
+{
+    public class @AvatarInput : IInputActionCollection, IDisposable
+    {
         public InputActionAsset asset { get; }
-        public @AvatarInput() {
+        public @AvatarInput()
+        {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""AvatarInput"",
     ""maps"": [
@@ -183,52 +186,61 @@ namespace Runtime.Player {
             m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         }
 
-        public void Dispose() {
+        public void Dispose()
+        {
             UnityEngine.Object.Destroy(asset);
         }
 
-        public InputBinding? bindingMask {
+        public InputBinding? bindingMask
+        {
             get => asset.bindingMask;
             set => asset.bindingMask = value;
         }
 
-        public ReadOnlyArray<InputDevice>? devices {
+        public ReadOnlyArray<InputDevice>? devices
+        {
             get => asset.devices;
             set => asset.devices = value;
         }
 
         public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-        public bool Contains(InputAction action) {
+        public bool Contains(InputAction action)
+        {
             return asset.Contains(action);
         }
 
-        public IEnumerator<InputAction> GetEnumerator() {
+        public IEnumerator<InputAction> GetEnumerator()
+        {
             return asset.GetEnumerator();
         }
 
-        IEnumerator IEnumerable.GetEnumerator() {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
             return GetEnumerator();
         }
 
-        public void Enable() {
+        public void Enable()
+        {
             asset.Enable();
         }
 
-        public void Disable() {
+        public void Disable()
+        {
             asset.Disable();
         }
 
         // Player
-        readonly InputActionMap m_Player;
-        IPlayerActions m_PlayerActionsCallbackInterface;
-        readonly InputAction m_Player_Movement;
-        readonly InputAction m_Player_Look;
-        readonly InputAction m_Player_Jump;
-        readonly InputAction m_Player_Sonar;
-        readonly InputAction m_Player_Menu;
-        public struct PlayerActions {
-            @AvatarInput m_Wrapper;
+        private readonly InputActionMap m_Player;
+        private IPlayerActions m_PlayerActionsCallbackInterface;
+        private readonly InputAction m_Player_Movement;
+        private readonly InputAction m_Player_Look;
+        private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_Sonar;
+        private readonly InputAction m_Player_Menu;
+        public struct PlayerActions
+        {
+            private @AvatarInput m_Wrapper;
             public PlayerActions(@AvatarInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Player_Movement;
             public InputAction @Look => m_Wrapper.m_Player_Look;
@@ -240,8 +252,10 @@ namespace Runtime.Player {
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
             public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void SetCallbacks(IPlayerActions instance) {
-                if (m_Wrapper.m_PlayerActionsCallbackInterface != null) {
+            public void SetCallbacks(IPlayerActions instance)
+            {
+                if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+                {
                     @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                     @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                     @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
@@ -259,7 +273,8 @@ namespace Runtime.Player {
                     @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
-                if (instance != null) {
+                if (instance != null)
+                {
                     @Movement.started += instance.OnMovement;
                     @Movement.performed += instance.OnMovement;
                     @Movement.canceled += instance.OnMovement;
@@ -279,7 +294,8 @@ namespace Runtime.Player {
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
-        public interface IPlayerActions {
+        public interface IPlayerActions
+        {
             void OnMovement(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
