@@ -37,7 +37,7 @@ namespace Runtime.Player {
             input = new AvatarInput();
             avatar = new Movement(settings, input.Player, character);
             look = new Look(settings, input.Player, body, eyes);
-            sonar = new Sonar(settings, input.Player, eyes, () => avatar.velocity);
+            sonar = new Sonar(settings, input.Player, eyes, () => avatar.currentVelocity);
         }
         void OnEnable() {
             input.Enable();

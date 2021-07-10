@@ -39,11 +39,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   smoothingTime: 0.125
-  jumpStartSpeed: 12
-  jumpStopSpeed: 4
+  jumpStartSpeed: {x: -4, y: 12}
+  jumpStopSpeed: {x: 2, y: 4}
   shortJumpInputDuration: 0.1
   mediumJumpInputDuration: 0.2
-  shortJumpExecutionDuration: 0.1
+  shortJumpExecutionDuration: 0.15
   mediumJumpExecutionDuration: 0.3
   longJumpExecutionDuration: 0.4
   cameraSpeed: {x: 0.25, y: 0.25}

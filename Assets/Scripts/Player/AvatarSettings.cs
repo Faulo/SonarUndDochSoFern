@@ -15,10 +15,10 @@ namespace Runtime.Player {
         public float smoothingTime = 1;
 
         [Header("Jumping")]
-        [SerializeField, Range(0, 100)]
-        public float jumpStartSpeed = 10;
-        [SerializeField, Range(0, 100)]
-        public float jumpStopSpeed = 2;
+        [SerializeField]
+        public Vector2 jumpStartSpeed = Vector2.one;
+        [SerializeField]
+        public Vector2 jumpStopSpeed = Vector2.one;
         [SerializeField, Range(0, 1)]
         public float shortJumpInputDuration = 0.1f;
         [SerializeField, Range(0, 1)]

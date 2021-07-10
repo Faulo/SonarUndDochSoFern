@@ -14,7 +14,9 @@ namespace Runtime.Player {
         AvatarInput.PlayerActions input;
         CharacterController character;
 
-        public Vector3 velocity;
+        Vector3 targetVelocity;
+        Vector2 targetMovement;
+        public Vector3 currentVelocity;
         Vector3 acceleration;
 
         bool intendsToJump;
@@ -43,41 +45,44 @@ namespace Runtime.Player {
         }
 
         public void Update(float deltaTime) {
+            CalculateTargetVelocity();
             ProcessJump();
 
-            var movement = input.Movement.ReadValue<Vector2>();
-            movement *= currentSpeed;
-            DampMovementOverForward(ref movement);
-            var targetVelocity = new Vector3(movement.x, velocity.y, movement.y);
-            targetVelocity = character.transform.rotation * targetVelocity;
-            velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref acceleration, settings.smoothingTime);
+            targetVelocity.y = currentVelocity.y;
+            currentVelocity = Vector3.SmoothDamp(currentVelocity, targetVelocity, ref acceleration, settings.smoothingTime);
 
             float gravity = Physics.gravity.y * deltaTime;
-            if (character.isGrounded && velocity.y <= gravity) {
-                velocity.y = gravity;
+            if (character.isGrounded && currentVelocity.y <= gravity) {
+                currentVelocity.y = gravity;
             } else {
-                velocity.y += gravity;
+                currentVelocity.y += gravity;
             }
 
-            character.Move(velocity * deltaTime);
+            character.Move(currentVelocity * deltaTime);
         }
 
-        void DampMovementOverForward(ref Vector2 movement) {
-            if (movement != Vector2.zero) {
-                var movementForward = new Vector3(movement.x, 0, movement.y).normalized;
-                float forward = Vector3.Dot(character.transform.rotation * movementForward, character.transform.forward);
-                Debug.Log(forward);
-                movement *= settings.speedOverForward.Evaluate(forward);
+        void CalculateTargetVelocity() {
+            var movement = input.Movement.ReadValue<Vector2>();
+            targetVelocity = character.transform.rotation * new Vector3(movement.x, 0, movement.y);
+            targetVelocity *= currentSpeed;
+            if (targetVelocity != Vector3.zero) {
+                float forward = Vector3.Dot(targetVelocity.normalized, character.transform.forward);
+                targetVelocity *= settings.speedOverForward.Evaluate(forward);
+            }
+            targetMovement = new Vector2(targetVelocity.x, targetVelocity.z);
+            if (targetMovement != Vector2.zero) {
+                targetMovement.Normalize();
             }
         }
-
         void ProcessJump() {
             switch (jumpState) {
                 case JumpState.NotJumping:
                     if (character.isGrounded && input.Jump.phase == InputActionPhase.Started) {
                         jumpTimer = 0;
                         jumpState = JumpState.ShortJump;
-                        velocity.y = settings.jumpStartSpeed;
+                        currentVelocity.x += targetMovement.x * settings.jumpStartSpeed.x;
+                        currentVelocity.y = settings.jumpStartSpeed.y;
+                        currentVelocity.z += targetMovement.y * settings.jumpStartSpeed.x;
                     }
                     break;
                 case JumpState.ShortJump:
@@ -107,7 +112,9 @@ namespace Runtime.Player {
                 };
                 if (jumpTimer >= duration) {
                     jumpState = JumpState.NotJumping;
-                    velocity.y = Math.Min(velocity.y, settings.jumpStopSpeed);
+                    currentVelocity.x += targetMovement.x * settings.jumpStopSpeed.x;
+                    currentVelocity.y = Math.Min(currentVelocity.y, settings.jumpStopSpeed.y);
+                    currentVelocity.z += targetMovement.y * settings.jumpStopSpeed.x;
                 }
             }
         }
