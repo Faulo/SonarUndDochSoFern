@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 5898451251030740947}
   - component: {fileID: 5898451251030740946}
   - component: {fileID: 5898451251030740944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,6 +348,7 @@ MonoBehaviour:
   eyes: {fileID: 5898451250273168144}
   unityCamera: {fileID: 5898451250781030298}
   cinemachineCamera: {fileID: 5898451251239731600}
+  updateMethod: 0
 --- !u!143 &5898451251030740944
 CharacterController:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
