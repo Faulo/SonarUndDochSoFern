@@ -13,11 +13,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.type
-      value: 10
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.radius.value
@@ -26,6 +34,18 @@ PrefabInstance:
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: ShapeModule.randomPositionAmount
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: ShapeModule.sphericalDirectionAmount
+      value: 0.0625
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295465, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: m_RootOrder
