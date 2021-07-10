@@ -1,12 +1,29 @@
 fileFormatVersion: 2
-guid: 4db64556cf6e96f4ebe974c8a5a9d9c5
+guid: 0dfbc6b807f1c754aa72f3974c75698d
 ModelImporter:
   serializedVersion: 21100
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: 1989289236423521904
-    second: Default Take
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LevelMar_002
+    second: {fileID: 2100000, guid: ee637d09dd7e5724ba59aeabeda90229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LevelMat_00
+    second: {fileID: 2100000, guid: 4976c5957e8a324428d63d28573c79b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LevelMat_001
+    second: {fileID: 2100000, guid: 428a0339af5c5384fb27fc48de04ac47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LevelMat_003
+    second: {fileID: 2100000, guid: fedf6a2d4de771643ab288ee38153139, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -37,9 +54,9 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 15
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importVisibility: 1
@@ -88,7 +105,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.14999999
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
