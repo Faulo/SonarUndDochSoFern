@@ -56,6 +56,14 @@ namespace Runtime.Player {
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""424a111d-04be-43e4-97c2-6a03f5279259"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -168,6 +176,17 @@ namespace Runtime.Player {
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""047da930-590b-48d1-a49e-678f2d60fdbe"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -181,6 +200,7 @@ namespace Runtime.Player {
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Sonar = m_Player.FindAction("Sonar", throwIfNotFound: true);
             m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         }
 
         public void Dispose() {
@@ -227,6 +247,7 @@ namespace Runtime.Player {
         readonly InputAction m_Player_Jump;
         readonly InputAction m_Player_Sonar;
         readonly InputAction m_Player_Menu;
+        readonly InputAction m_Player_Sprint;
         public struct PlayerActions {
             @AvatarInput m_Wrapper;
             public PlayerActions(@AvatarInput wrapper) { m_Wrapper = wrapper; }
@@ -235,6 +256,7 @@ namespace Runtime.Player {
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Sonar => m_Wrapper.m_Player_Sonar;
             public InputAction @Menu => m_Wrapper.m_Player_Menu;
+            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -257,6 +279,9 @@ namespace Runtime.Player {
                     @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                     @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                     @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                    @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                    @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                    @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null) {
@@ -275,6 +300,9 @@ namespace Runtime.Player {
                     @Menu.started += instance.OnMenu;
                     @Menu.performed += instance.OnMenu;
                     @Menu.canceled += instance.OnMenu;
+                    @Sprint.started += instance.OnSprint;
+                    @Sprint.performed += instance.OnSprint;
+                    @Sprint.canceled += instance.OnSprint;
                 }
             }
         }
@@ -285,6 +313,7 @@ namespace Runtime.Player {
             void OnJump(InputAction.CallbackContext context);
             void OnSonar(InputAction.CallbackContext context);
             void OnMenu(InputAction.CallbackContext context);
+            void OnSprint(InputAction.CallbackContext context);
         }
     }
 }

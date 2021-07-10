@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Runtime.Player {
-    public class Movement : IDisposable {
+    public class Movement : IUpdatable, IDisposable {
         AvatarSettings settings;
         AvatarInput.PlayerActions input;
         CharacterController character;
 
-        Vector3 velocity;
+        public Vector3 velocity;
         Vector3 acceleration;
 
         public Movement(AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {

@@ -19,3 +19,4 @@ MonoBehaviour:
   cameraSmoothing: 0.0625
   cameraMinX: -120
   cameraMaxX: 60
+  sonarPrefab: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}

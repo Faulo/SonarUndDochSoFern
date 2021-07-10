@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Runtime.Player {
-    public class Look : IDisposable {
+    public class Look : IUpdatable, IDisposable {
         AvatarSettings settings;
         AvatarInput.PlayerActions input;
         Transform body;
