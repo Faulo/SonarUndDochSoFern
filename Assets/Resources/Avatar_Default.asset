@@ -53,3 +53,4 @@ MonoBehaviour:
   sonarPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
   specialPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
   specialEjectSpeed: {x: 0, y: 5, z: 15}
+  sonarBurstCount: 100

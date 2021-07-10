@@ -4823,6 +4823,7 @@ MonoBehaviour:
   sonarSystem: {fileID: 5524985771003295462}
   paintSystem: {fileID: 810150601271598360}
   renderer: {fileID: 0}
+  paintOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6369940176163505583
 GameObject:
   m_ObjectHideFlags: 0

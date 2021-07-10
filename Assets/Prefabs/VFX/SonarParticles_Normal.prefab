@@ -16,6 +16,10 @@ PrefabInstance:
       value: SonarParticles_Normal
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.type
       value: 4
       objectReference: {fileID: 0}
@@ -28,12 +32,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.m_Rotation.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -48,8 +56,16 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: ShapeModule.sphericalDirectionAmount
       value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295465, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: m_RootOrder

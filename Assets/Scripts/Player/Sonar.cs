@@ -11,6 +11,7 @@ namespace Runtime.Player {
 
         ParticleSystem particles;
         ParticleSystem.MainModule particlesMain;
+        ParticleSystem.EmissionModule particlesEmission;
 
         public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes) {
             this.avatar = avatar;
@@ -21,6 +22,9 @@ namespace Runtime.Player {
             RegisterInput();
             particles = UnityEngine.Object.Instantiate(settings.sonarPrefab, eyes);
             particlesMain = particles.main;
+            particlesEmission = particles.emission;
+
+            particlesEmission.enabled = false;
         }
 
         public void Dispose() {
@@ -43,12 +47,14 @@ namespace Runtime.Player {
         }
 
         public void Update(float deltaTime) {
+            particlesMain.emitterVelocity = avatar.velocity;
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
-            particlesMain.emitterVelocity = avatar.velocity;
+            particlesEmission.enabled = true;
             particles.Emit(settings.sonarBurstCount);
         }
         void HandleSonarCancel(InputAction.CallbackContext context) {
+            particlesEmission.enabled = false;
         }
         void HandleSpecialStart(InputAction.CallbackContext context) {
             var special = UnityEngine.Object.Instantiate(settings.specialPrefab, avatar.position, avatar.rotation);
