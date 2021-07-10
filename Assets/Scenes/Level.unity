@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.39627093, g: 0.49139744, b: 0.6132076, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 0.01
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.25
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 545840276}
-  m_IndirectSpecularColor: {r: 0.28462005, g: 0.37120837, b: 0.4988044, a: 1}
+  m_IndirectSpecularColor: {r: 0.99121004, g: 0.99121004, b: 0.99121004, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: e0a5d1493a380e6409bdfc9cc2275518, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9ffa78b7b7bf07e4da2132ffd4dd8a8a, type: 2}
+      objectReference: {fileID: 2100000, guid: b67b3b234dc74e7438b5621e410d0952, type: 2}
     - target: {fileID: 919132149155446097, guid: e0a5d1493a380e6409bdfc9cc2275518, type: 3}
       propertyPath: m_Name
       value: level sketch
