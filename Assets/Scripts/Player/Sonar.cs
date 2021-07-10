@@ -46,7 +46,7 @@ namespace Runtime.Player {
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
             particlesMain.emitterVelocity = avatar.velocity;
-            particles.Emit(1000);
+            particles.Emit(settings.sonarBurstCount);
         }
         void HandleSonarCancel(InputAction.CallbackContext context) {
         }

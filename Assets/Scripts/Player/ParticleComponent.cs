@@ -14,9 +14,11 @@ namespace Runtime.Player {
         void OnParticleCollision(GameObject other) {
             int eventCount = sonarSystem.GetCollisionEvents(other, events);
             for (int i = 0; i < eventCount; i++) {
+                var rotation = Quaternion.LookRotation(events[i].normal);
+                rotation *= Quaternion.Euler(0, 2 * Mathf.Rad2Deg * Mathf.Asin(events[i].normal.z), 0);
                 var emitParams = new ParticleSystem.EmitParams {
                     position = events[i].intersection,
-                    rotation3D = Quaternion.LookRotation(events[i].normal, Vector3.up).eulerAngles,
+                    rotation3D = rotation.eulerAngles,//new Vector3(Mathf.Rad2Deg * Mathf.Asin(events[i].normal.y), 0, 0),
                 };
                 paintSystem.Emit(emitParams, 1);
             }
