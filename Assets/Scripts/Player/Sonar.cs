@@ -1,0 +1,62 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace Runtime.Player {
+    public class Sonar : IUpdatable, IDisposable {
+        readonly IAvatar avatar;
+        readonly AvatarSettings settings;
+        readonly AvatarInput.PlayerActions input;
+        readonly Transform eyes;
+
+        ParticleSystem particles;
+        ParticleSystem.MainModule particlesMain;
+
+        public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes) {
+            this.avatar = avatar;
+            this.settings = settings;
+            this.input = input;
+            this.eyes = eyes;
+
+            RegisterInput();
+            particles = UnityEngine.Object.Instantiate(settings.sonarPrefab, eyes);
+            particlesMain = particles.main;
+        }
+
+        public void Dispose() {
+            UnregisterInput();
+            UnityEngine.Object.Destroy(particles.gameObject);
+        }
+
+        void RegisterInput() {
+            input.Sonar.started += HandleSonarStart;
+            input.Sonar.canceled += HandleSonarCancel;
+            input.Special.started += HandleSpecialStart;
+            input.Special.canceled += HandleSpecialCancel;
+        }
+
+        void UnregisterInput() {
+            input.Sonar.started -= HandleSonarStart;
+            input.Sonar.canceled -= HandleSonarCancel;
+            input.Special.started -= HandleSpecialStart;
+            input.Special.canceled -= HandleSpecialCancel;
+        }
+
+        public void Update(float deltaTime) {
+        }
+        void HandleSonarStart(InputAction.CallbackContext context) {
+            particlesMain.emitterVelocity = avatar.velocity;
+            particles.Emit(1000);
+        }
+        void HandleSonarCancel(InputAction.CallbackContext context) {
+        }
+        void HandleSpecialStart(InputAction.CallbackContext context) {
+            var special = UnityEngine.Object.Instantiate(settings.specialPrefab, avatar.position, avatar.rotation);
+            if (special.TryGetComponent<Rigidbody>(out var rigidbody)) {
+                rigidbody.velocity = avatar.velocity + (avatar.rotation * settings.specialEjectSpeed);
+            }
+        }
+        void HandleSpecialCancel(InputAction.CallbackContext context) {
+        }
+    }
+}

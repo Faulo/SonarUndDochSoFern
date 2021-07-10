@@ -12,10 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3318bb5a926e253428534931580a4987, type: 3}
   m_Name: Avatar_Default
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  walkingSpeed: 5
+  runningSpeed: 12
+  speedOverForward:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: 0.7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   smoothingTime: 0.125
-  jumpSpeed: 10
+  jumpStartSpeed: {x: -4, y: 12}
+  jumpStopSpeed: {x: 2, y: 4}
+  shortJumpInputDuration: 0.1
+  mediumJumpInputDuration: 0.2
+  shortJumpExecutionDuration: 0.15
+  mediumJumpExecutionDuration: 0.3
+  longJumpExecutionDuration: 0.4
   cameraSpeed: {x: 0.25, y: 0.25}
   cameraSmoothing: 0.0625
   cameraMinX: -120
   cameraMaxX: 60
+  sonarPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
+  specialPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
+  specialEjectSpeed: {x: 0, y: 5, z: 15}

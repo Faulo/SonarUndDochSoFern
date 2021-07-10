@@ -1,9 +1,17 @@
+using System;
 using Cinemachine;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace Runtime.Player {
-    public class AvatarComponent : MonoBehaviour {
+    public class AvatarComponent : MonoBehaviour, IAvatar {
+        public enum UpdateMethod {
+            Update,
+            FixedUpdate,
+            LateUpdate,
+            SmartUpdate,
+        };
+        [Header("MonoBehaviour Configuration")]
         [SerializeField, Expandable]
         AvatarSettings settings = default;
         [SerializeField, Expandable]
@@ -17,14 +25,28 @@ namespace Runtime.Player {
         [SerializeField, Expandable]
         CinemachineVirtualCamera cinemachineCamera = default;
 
+        [Header("Unity Configuration")]
+        [SerializeField]
+        UpdateMethod updateMethod = UpdateMethod.FixedUpdate;
+
         AvatarInput input;
-        Movement avatar;
+        Movement movement;
         Look look;
+        Sonar sonar;
+
+        public event Action<ControllerColliderHit> onControllerColliderHit;
+
+        public Vector3 forward => eyes.forward;
+        public Vector3 velocity => movement.currentVelocity;
+        public Vector3 position => eyes.position;
+        public Quaternion rotation => eyes.rotation;
+
 
         void Awake() {
             input = new AvatarInput();
-            avatar = new Movement(settings, input.Player, character);
-            look = new Look(settings, input.Player, body, eyes);
+            movement = new Movement(this, settings, input.Player, character);
+            look = new Look(this, settings, input.Player, body, eyes);
+            sonar = new Sonar(this, settings, input.Player, eyes);
         }
         void OnEnable() {
             input.Enable();
@@ -32,9 +54,29 @@ namespace Runtime.Player {
         void OnDisable() {
             input.Disable();
         }
+        void Update() {
+            if (updateMethod == UpdateMethod.Update) {
+                look.Update(Time.deltaTime);
+                movement.Update(Time.deltaTime);
+                sonar.Update(Time.deltaTime);
+            }
+        }
         void FixedUpdate() {
-            look.Update(Time.deltaTime);
-            avatar.Update(Time.deltaTime);
+            if (updateMethod == UpdateMethod.FixedUpdate) {
+                look.Update(Time.deltaTime);
+                movement.Update(Time.deltaTime);
+                sonar.Update(Time.deltaTime);
+            }
+        }
+        void LateUpdate() {
+            if (updateMethod == UpdateMethod.LateUpdate) {
+                look.Update(Time.deltaTime);
+                movement.Update(Time.deltaTime);
+                sonar.Update(Time.deltaTime);
+            }
+        }
+        void OnControllerColliderHit(ControllerColliderHit hit) {
+            onControllerColliderHit?.Invoke(hit);
         }
     }
 }
