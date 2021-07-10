@@ -47,6 +47,7 @@ namespace Runtime.Player {
 
             var movement = input.Movement.ReadValue<Vector2>();
             movement *= currentSpeed;
+            DampMovementOverForward(ref movement);
             var targetVelocity = new Vector3(movement.x, velocity.y, movement.y);
             targetVelocity = character.transform.rotation * targetVelocity;
             velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref acceleration, settings.smoothingTime);
@@ -60,6 +61,16 @@ namespace Runtime.Player {
 
             character.Move(velocity * deltaTime);
         }
+
+        void DampMovementOverForward(ref Vector2 movement) {
+            if (movement != Vector2.zero) {
+                var movementForward = new Vector3(movement.x, 0, movement.y).normalized;
+                float forward = Vector3.Dot(character.transform.rotation * movementForward, character.transform.forward);
+                Debug.Log(forward);
+                movement *= settings.speedOverForward.Evaluate(forward);
+            }
+        }
+
         void ProcessJump() {
             switch (jumpState) {
                 case JumpState.NotJumping:

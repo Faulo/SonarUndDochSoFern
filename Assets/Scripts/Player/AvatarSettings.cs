@@ -9,8 +9,8 @@ namespace Runtime.Player {
         public float walkingSpeed = 5;
         [SerializeField, Range(0, 100)]
         public float runningSpeed = 12;
-        [SerializeField, Range(0, 100)]
-        public AnimationCurve speedOverForward = AnimationCurve.Constant(0, 1, 1);
+        [SerializeField]
+        public AnimationCurve speedOverForward = AnimationCurve.Constant(-1, 1, 1);
         [SerializeField, Range(0, 10)]
         public float smoothingTime = 1;
 
