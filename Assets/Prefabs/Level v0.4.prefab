@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2787454257580368736}
   - component: {fileID: 93433925856827306}
   - component: {fileID: 4138440577924807974}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Level v0.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1225222596257475781
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894623294670583423}
-  m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: -10.46}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
@@ -52,7 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -61,10 +61,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 428a0339af5c5384fb27fc48de04ac47, type: 2}
-  - {fileID: 2100000, guid: 4976c5957e8a324428d63d28573c79b8, type: 2}
-  - {fileID: 2100000, guid: fedf6a2d4de771643ab288ee38153139, type: 2}
-  - {fileID: 2100000, guid: ee637d09dd7e5724ba59aeabeda90229, type: 2}
+  - {fileID: 2100000, guid: a8f28825dea70a94bb617fa557c8d9c9, type: 2}
+  - {fileID: 2100000, guid: 721af0f6703ff444f9efe9675b2436ca, type: 2}
+  - {fileID: 2100000, guid: 3afceaa718373d943b3b3016e6154948, type: 2}
+  - {fileID: 2100000, guid: 19b314eb385441446ba0da65e1609401, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
