@@ -20,6 +20,9 @@ namespace Runtime.Player {
         bool intendsToJump;
         JumpState jumpState;
         float jumpTimer;
+        float currentSpeed => input.Sprint.phase == InputActionPhase.Started
+            ? settings.runningSpeed
+            : settings.walkingSpeed;
 
         public Movement(AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
             this.settings = settings;
@@ -34,24 +37,17 @@ namespace Runtime.Player {
         }
 
         void RegisterInput() {
-            input.Jump.started += HandleJumpStart;
-            input.Jump.canceled += HandleJumpCancel;
-            input.Sonar.started += HandleSonarStart;
-            input.Sonar.canceled += HandleSonarCancel;
         }
 
         void UnregisterInput() {
-            input.Jump.started -= HandleJumpStart;
-            input.Jump.canceled -= HandleJumpCancel;
-            input.Sonar.started -= HandleSonarStart;
-            input.Sonar.canceled -= HandleSonarCancel;
         }
 
         public void Update(float deltaTime) {
             ProcessJump();
 
             var movement = input.Movement.ReadValue<Vector2>();
-            var targetVelocity = new Vector3(movement.x * settings.maxSpeed, velocity.y, movement.y * settings.maxSpeed);
+            movement *= currentSpeed;
+            var targetVelocity = new Vector3(movement.x, velocity.y, movement.y);
             targetVelocity = character.transform.rotation * targetVelocity;
             velocity = Vector3.SmoothDamp(velocity, targetVelocity, ref acceleration, settings.smoothingTime);
 
@@ -63,21 +59,6 @@ namespace Runtime.Player {
             }
 
             character.Move(velocity * deltaTime);
-        }
-
-        void HandleJumpStart(InputAction.CallbackContext context) {
-            /*
-            if (character.isGrounded) {
-                velocity.y = settings.jumpSpeed;
-                jumpTimer = 0;
-                jumpState = JumpState.ShortJump;
-                intendsToJump = true;
-            }
-            //*/
-        }
-        void HandleJumpCancel(InputAction.CallbackContext context) {
-            //intendsToJump = false;
-            //jumpState = JumpState.NotJumping;
         }
         void ProcessJump() {
             switch (jumpState) {
@@ -118,10 +99,6 @@ namespace Runtime.Player {
                     velocity.y = Math.Min(velocity.y, settings.jumpStopSpeed);
                 }
             }
-        }
-        void HandleSonarStart(InputAction.CallbackContext context) {
-        }
-        void HandleSonarCancel(InputAction.CallbackContext context) {
         }
     }
 }
