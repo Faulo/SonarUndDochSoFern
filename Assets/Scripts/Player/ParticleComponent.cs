@@ -18,15 +18,17 @@ namespace Runtime.Player {
                 rotation *= Quaternion.Euler(0, 2 * Mathf.Rad2Deg * Mathf.Asin(events[i].normal.z), 0);
                 var emitParams = new ParticleSystem.EmitParams {
                     position = events[i].intersection,
-                    rotation3D = rotation.eulerAngles,//new Vector3(Mathf.Rad2Deg * Mathf.Asin(events[i].normal.y), 0, 0),
+                    rotation3D = rotation.eulerAngles,
                 };
                 paintSystem.Emit(emitParams, 1);
             }
         }
         void OnCollisionEnter(Collision collision) {
             if (TryGetComponent<Rigidbody>(out var rigidbody)) {
-                rigidbody.isKinematic = true;
+                var main = sonarSystem.main;
+                main.emitterVelocity = rigidbody.velocity;
                 sonarSystem.Play();
+                rigidbody.isKinematic = true;
             }
             if (renderer) {
                 renderer.enabled = false;

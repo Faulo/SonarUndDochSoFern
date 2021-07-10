@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 545840276}
-  m_IndirectSpecularColor: {r: 0.28462005, g: 0.37120837, b: 0.4988044, a: 1}
+  m_IndirectSpecularColor: {r: 0.99121004, g: 0.99121004, b: 0.99121004, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -389,13 +389,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: AvatarRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 5898451250781030298, guid: f1161e646edf04646b1990f79c40b367, type: 3}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5898451250781030301, guid: f1161e646edf04646b1990f79c40b367, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 5898451251239731601, guid: f1161e646edf04646b1990f79c40b367, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1161e646edf04646b1990f79c40b367, type: 3}
