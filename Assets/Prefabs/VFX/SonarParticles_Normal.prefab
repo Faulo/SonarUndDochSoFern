@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 810150601271598360, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295460, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: m_Name
       value: SonarParticles_Normal

@@ -9,6 +9,8 @@ namespace Runtime.Player {
         ParticleSystem paintSystem = default;
         [SerializeField]
         new Renderer renderer = default;
+        [SerializeField]
+        Vector3 paintOffset = Vector3.zero;
 
         List<ParticleCollisionEvent> events = new List<ParticleCollisionEvent>(1024);
         void OnParticleCollision(GameObject other) {
@@ -17,7 +19,7 @@ namespace Runtime.Player {
                 var rotation = Quaternion.LookRotation(events[i].normal);
                 rotation *= Quaternion.Euler(0, 2 * Mathf.Rad2Deg * Mathf.Asin(events[i].normal.z), 0);
                 var emitParams = new ParticleSystem.EmitParams {
-                    position = events[i].intersection,
+                    position = events[i].intersection + (rotation * paintOffset),
                     rotation3D = rotation.eulerAngles,
                 };
                 paintSystem.Emit(emitParams, 1);

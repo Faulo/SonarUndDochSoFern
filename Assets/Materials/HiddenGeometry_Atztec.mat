@@ -82,8 +82,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - AlphaThreshold: 0
+    - AlphaThreshold: 1
+    - Dithering: 1
+    - Dithing: 2
     - FresnelPower: 0
+    - Tiling: 10
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

@@ -410,9 +410,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 753493849975346012, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867868440716369337, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867868440716369337, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8f28825dea70a94bb617fa557c8d9c9, type: 2}
     - target: {fileID: 8645003951279418245, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645003951279418245, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8985501383955050815, guid: 017d497f3ca3c124399593ceca0a20dd, type: 3}
       propertyPath: m_RootOrder

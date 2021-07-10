@@ -56,9 +56,9 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: EnvironmentBehind
-    Event: 500
+    Event: 250
     filterSettings:
-      RenderQueueType: 1
+      RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
         m_Bits: 4096
@@ -66,15 +66,15 @@ MonoBehaviour:
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
     overrideDepthState: 1
-    depthCompareFunction: 5
+    depthCompareFunction: 7
     enableWrite: 0
     stencilSettings:
       overrideStencilState: 0
       stencilReference: 0
-      stencilCompareFunction: 8
-      passOperation: 0
-      failOperation: 0
-      zFailOperation: 0
+      stencilCompareFunction: 3
+      passOperation: 1
+      failOperation: 1
+      zFailOperation: 1
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
