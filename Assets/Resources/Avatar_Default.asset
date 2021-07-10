@@ -51,3 +51,5 @@ MonoBehaviour:
   cameraMinX: -120
   cameraMaxX: 60
   sonarPrefab: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+  specialPrefab: {fileID: 5524985771003295462, guid: 2a6d94f1f489edb48b7de9fa41d5634f, type: 3}
+  specialEjectSpeed: {x: 0, y: 5, z: 15}

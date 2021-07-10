@@ -64,6 +64,14 @@ namespace Runtime.Player {
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""591b5f0a-2f50-4c08-bb0a-1eb5e922b9f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -93,17 +101,6 @@ namespace Runtime.Player {
                     ""name"": """",
                     ""id"": ""bb89e800-3d3f-4490-a953-8fc70ef94fa8"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Sonar"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4717a9cb-b3f1-4684-b95e-4d8e0e5f70a5"",
-                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,6 +184,17 @@ namespace Runtime.Player {
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4717a9cb-b3f1-4684-b95e-4d8e0e5f70a5"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -201,6 +209,7 @@ namespace Runtime.Player {
             m_Player_Sonar = m_Player.FindAction("Sonar", throwIfNotFound: true);
             m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+            m_Player_Special = m_Player.FindAction("Special", throwIfNotFound: true);
         }
 
         public void Dispose() {
@@ -248,6 +257,7 @@ namespace Runtime.Player {
         readonly InputAction m_Player_Sonar;
         readonly InputAction m_Player_Menu;
         readonly InputAction m_Player_Sprint;
+        readonly InputAction m_Player_Special;
         public struct PlayerActions {
             @AvatarInput m_Wrapper;
             public PlayerActions(@AvatarInput wrapper) { m_Wrapper = wrapper; }
@@ -257,6 +267,7 @@ namespace Runtime.Player {
             public InputAction @Sonar => m_Wrapper.m_Player_Sonar;
             public InputAction @Menu => m_Wrapper.m_Player_Menu;
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+            public InputAction @Special => m_Wrapper.m_Player_Special;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -282,6 +293,9 @@ namespace Runtime.Player {
                     @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                     @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                     @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                    @Special.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
+                    @Special.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
+                    @Special.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null) {
@@ -303,6 +317,9 @@ namespace Runtime.Player {
                     @Sprint.started += instance.OnSprint;
                     @Sprint.performed += instance.OnSprint;
                     @Sprint.canceled += instance.OnSprint;
+                    @Special.started += instance.OnSpecial;
+                    @Special.performed += instance.OnSpecial;
+                    @Special.canceled += instance.OnSpecial;
                 }
             }
         }
@@ -314,6 +331,7 @@ namespace Runtime.Player {
             void OnSonar(InputAction.CallbackContext context);
             void OnMenu(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
+            void OnSpecial(InputAction.CallbackContext context);
         }
     }
 }

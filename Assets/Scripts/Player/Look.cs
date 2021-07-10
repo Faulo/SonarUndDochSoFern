@@ -4,10 +4,11 @@ using UnityEngine.InputSystem;
 
 namespace Runtime.Player {
     public class Look : IUpdatable, IDisposable {
-        AvatarSettings settings;
-        AvatarInput.PlayerActions input;
-        Transform body;
-        Transform eyes;
+        readonly IAvatar avatar;
+        readonly AvatarSettings settings;
+        readonly AvatarInput.PlayerActions input;
+        readonly Transform body;
+        readonly Transform eyes;
 
         float horizontalAngle;
         float horizontalSpeed;
@@ -22,7 +23,8 @@ namespace Runtime.Player {
                 : CursorLockMode.None;
         }
 
-        public Look(AvatarSettings settings, AvatarInput.PlayerActions input, Transform body, Transform eyes) {
+        public Look(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform body, Transform eyes) {
+            this.avatar = avatar;
             this.settings = settings;
             this.input = input;
             this.body = body;

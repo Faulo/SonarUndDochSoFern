@@ -10,6 +10,8 @@ namespace Runtime.Player {
             MediumJump,
             LongJump,
         }
+
+        IAvatar avatar;
         AvatarSettings settings;
         AvatarInput.PlayerActions input;
         CharacterController character;
@@ -26,7 +28,8 @@ namespace Runtime.Player {
             ? settings.runningSpeed
             : settings.walkingSpeed;
 
-        public Movement(AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
+        public Movement(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
+            this.avatar = avatar;
             this.settings = settings;
             this.character = character;
             this.input = input;
