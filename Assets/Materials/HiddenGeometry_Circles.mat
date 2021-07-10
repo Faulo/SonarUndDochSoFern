@@ -99,7 +99,7 @@ Material:
     m_Ints: []
     m_Floats:
     - AlphaThreshold: 1
-    - Dithering: 1
+    - Dithering: 1.5
     - Dithing: 2
     - FresnelPower: 0
     - Tiling: 10
