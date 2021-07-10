@@ -6,7 +6,9 @@
         "Cinemachine",
         "Unity.ProBuilder",
         "Unity.TextMeshPro",
-        "Slothsoft.UnityExtensions.Runtime"
+        "Slothsoft.UnityExtensions.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
