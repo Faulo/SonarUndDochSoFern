@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Runtime.Player {
     public class ParticleComponent : MonoBehaviour {
@@ -13,6 +14,8 @@ namespace Runtime.Player {
         Vector3 paintOffset = Vector3.zero;
         [SerializeField]
         float killY = 0;
+        [SerializeField]
+        UnityEvent<GameObject> onCollision = new UnityEvent<GameObject>();
 
         List<ParticleCollisionEvent> events = new List<ParticleCollisionEvent>(1024);
         void OnParticleCollision(GameObject other) {
@@ -45,6 +48,7 @@ namespace Runtime.Player {
             if (renderer) {
                 renderer.enabled = false;
             }
+            onCollision.Invoke(gameObject);
         }
     }
 }

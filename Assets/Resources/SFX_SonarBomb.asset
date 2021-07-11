@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e73c1e9ec53f8fe4a877b7a03e62cfb0, type: 3}
-  m_Name: SFX_Step
+  m_Name: SFX_SonarBomb
   m_EditorClassIdentifier: 
   prefab: {fileID: 1764776631570160442, guid: 894887b3e17d1f740aa302a041d91e59, type: 3}
-  clip: {fileID: 8300000, guid: c47243fe6b1a6ad479149a885ce890db, type: 3}
-  mixer: {fileID: -672112381251190196, guid: 84f50534105946a4686042e9a3868b3a, type: 2}
+  clip: {fileID: 8300000, guid: 08b8b4cf76d8a14439ec605423f55ee1, type: 3}
+  mixer: {fileID: -6839502241507279269, guid: 84f50534105946a4686042e9a3868b3a, type: 2}
   minPitch: 0.9
   maxPitch: 1.1
