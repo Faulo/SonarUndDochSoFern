@@ -14,12 +14,20 @@ namespace Runtime.Player {
         public AnimationCurve speedOverForward = AnimationCurve.Constant(-1, 1, 1);
         [SerializeField, Range(0, 10)]
         public float smoothingTime = 1;
+        [SerializeField, Range(0, 10)]
+        public float metersPerStep = 1;
 
         [Header("Jumping")]
+        [SerializeField, Range(-10, 10)]
+        public float jumpGravityMultiplier = 1;
         [SerializeField]
         public Vector2 jumpStartSpeed = Vector2.one;
         [SerializeField]
-        public Vector2 jumpStopSpeed = Vector2.one;
+        public Vector2 jumpShortStopSpeed = Vector2.one;
+        [SerializeField]
+        public Vector2 jumpMediumStopSpeed = Vector2.one;
+        [SerializeField]
+        public Vector2 jumpLongStopSpeed = Vector2.one;
         [SerializeField, Range(0, 1)]
         public float shortJumpInputDuration = 0.1f;
         [SerializeField, Range(0, 1)]
@@ -76,5 +84,7 @@ namespace Runtime.Player {
         public UnityEvent<GameObject> onJumpCountChanged = new UnityEvent<GameObject>();
         [SerializeField]
         public UnityEvent<GameObject> onAmmoCountChanged = new UnityEvent<GameObject>();
+        [SerializeField]
+        public UnityEvent<GameObject> onStep = new UnityEvent<GameObject>();
     }
 }

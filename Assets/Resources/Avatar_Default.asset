@@ -39,12 +39,16 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   smoothingTime: 0.125
-  jumpStartSpeed: {x: -4, y: 12}
-  jumpStopSpeed: {x: 2, y: 4}
+  metersPerStep: 2
+  jumpGravityMultiplier: 0.75
+  jumpStartSpeed: {x: -2, y: 9}
+  jumpShortStopSpeed: {x: 2, y: 4}
+  jumpMediumStopSpeed: {x: 1, y: 4}
+  jumpLongStopSpeed: {x: -1, y: 4}
   shortJumpInputDuration: 0.1
   mediumJumpInputDuration: 0.2
-  shortJumpExecutionDuration: 0.15
-  mediumJumpExecutionDuration: 0.3
+  shortJumpExecutionDuration: 0.1
+  mediumJumpExecutionDuration: 0.2
   longJumpExecutionDuration: 0.4
   cameraSpeed: {x: 0.25, y: 0.25}
   cameraSmoothing: 0.0625
@@ -63,3 +67,30 @@ MonoBehaviour:
   powerLayer:
     serializedVersion: 2
     m_Bits: 8192
+  onGainBurst:
+    m_PersistentCalls:
+      m_Calls: []
+  onGainBomb:
+    m_PersistentCalls:
+      m_Calls: []
+  onJumpCountChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onAmmoCountChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f92485f96004d34438ee2db1e5693b9b, type: 2}
+        m_TargetAssemblyTypeName: Runtime.PlaySFX, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

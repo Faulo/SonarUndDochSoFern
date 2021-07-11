@@ -29,6 +29,10 @@ namespace Runtime.Player {
             ? settings.runningSpeed
             : settings.walkingSpeed;
 
+        float stepDistance;
+        float airDistance;
+        Vector2 position2D => new Vector2(character.transform.position.x, character.transform.position.z);
+
         public Movement(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
             this.avatar = avatar;
             this.settings = settings;
@@ -56,13 +60,32 @@ namespace Runtime.Player {
             currentVelocity = Vector3.SmoothDamp(currentVelocity, targetVelocity, ref acceleration, settings.smoothingTime);
 
             float gravity = Physics.gravity.y * deltaTime;
+            if (jumpState != JumpState.NotJumping) {
+                gravity *= settings.jumpGravityMultiplier;
+            }
             if (character.isGrounded && currentVelocity.y <= gravity) {
                 currentVelocity.y = gravity;
             } else {
                 currentVelocity.y += gravity;
             }
 
+            var position = avatar.position;
             character.Move(currentVelocity * deltaTime);
+            ProcessStep(Vector3.Distance(position, avatar.position));
+        }
+
+        void ProcessStep(float deltaStep) {
+            if (!character.isGrounded) {
+                airDistance += deltaStep;
+                return;
+            }
+            stepDistance += airDistance;
+            stepDistance += deltaStep;
+            airDistance = 0;
+            if (stepDistance >= settings.metersPerStep) {
+                stepDistance = 0;
+                settings.onStep.Invoke(avatar.gameObject);
+            }
         }
 
         void CalculateTargetVelocity() {
@@ -118,11 +141,17 @@ namespace Runtime.Player {
                     JumpState.LongJump => settings.longJumpExecutionDuration,
                     _ => throw new NotImplementedException(),
                 };
+                var stopSpeed = jumpState switch {
+                    JumpState.ShortJump => settings.jumpShortStopSpeed,
+                    JumpState.MediumJump => settings.jumpMediumStopSpeed,
+                    JumpState.LongJump => settings.jumpLongStopSpeed,
+                    _ => throw new NotImplementedException(),
+                };
                 if (jumpTimer >= duration) {
                     jumpState = JumpState.NotJumping;
-                    currentVelocity.x += targetMovement.x * settings.jumpStopSpeed.x;
-                    currentVelocity.y = Math.Min(currentVelocity.y, settings.jumpStopSpeed.y);
-                    currentVelocity.z += targetMovement.y * settings.jumpStopSpeed.x;
+                    currentVelocity.x += targetMovement.x * stopSpeed.x;
+                    currentVelocity.y = Math.Min(currentVelocity.y, stopSpeed.y);
+                    currentVelocity.z += targetMovement.y * stopSpeed.x;
                 }
             }
         }
