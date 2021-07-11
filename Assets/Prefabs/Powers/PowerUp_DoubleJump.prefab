@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3297122545667704116, guid: ce52502ff721c5d49b00650a6816bfd9, type: 3}
       propertyPath: m_Name
-      value: PowerUp
+      value: PowerUp_DoubleJump
       objectReference: {fileID: 0}
     - target: {fileID: 3297122545667704120, guid: ce52502ff721c5d49b00650a6816bfd9, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 3297122545667704120, guid: ce52502ff721c5d49b00650a6816bfd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714677679080292437, guid: ce52502ff721c5d49b00650a6816bfd9, type: 3}
+      propertyPath: type
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce52502ff721c5d49b00650a6816bfd9, type: 3}

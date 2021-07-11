@@ -1,5 +1,6 @@
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Runtime.Player {
     [CreateAssetMenu]
@@ -65,5 +66,15 @@ namespace Runtime.Player {
         public float powerCollectRadius = 1;
         [SerializeField]
         public LayerMask powerLayer = default;
+
+        [Header("Events")]
+        [SerializeField]
+        public UnityEvent<GameObject> onGainBurst = new UnityEvent<GameObject>();
+        [SerializeField]
+        public UnityEvent<GameObject> onGainBomb = new UnityEvent<GameObject>();
+        [SerializeField]
+        public UnityEvent<GameObject> onJumpCountChanged = new UnityEvent<GameObject>();
+        [SerializeField]
+        public UnityEvent<GameObject> onAmmoCountChanged = new UnityEvent<GameObject>();
     }
 }

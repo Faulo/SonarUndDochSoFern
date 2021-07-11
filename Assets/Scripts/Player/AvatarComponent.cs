@@ -35,15 +35,52 @@ namespace Runtime.Player {
         Upgrades upgrades;
 
         public event Action<ControllerColliderHit> onControllerColliderHit;
+        public event Action onGainBurst;
+        public event Action onGainBomb;
+        public event Action onJumpCountChanged;
         public event Action onAmmoCountChanged;
 
         public Vector3 forward => eyes.forward;
         public Vector3 velocity => movement.currentVelocity;
         public Vector3 position => eyes.position;
         public Quaternion rotation => eyes.rotation;
-        public bool hasBurst { get; set; } = true;
-        public bool hasBomb { get; set; } = true;
-        public int jumpCount { get; set; } = 2;
+        public bool hasBurst {
+            get => m_hasBurst;
+            set {
+                if (m_hasBurst != value) {
+                    m_hasBurst = value;
+                    if (value) {
+                        onGainBurst?.Invoke();
+                    }
+                }
+            }
+        }
+        [SerializeField]
+        bool m_hasBurst = false;
+        public bool hasBomb {
+            get => m_hasBomb;
+            set {
+                if (m_hasBomb != value) {
+                    m_hasBomb = value;
+                    if (value) {
+                        onGainBomb?.Invoke();
+                    }
+                }
+            }
+        }
+        [SerializeField]
+        bool m_hasBomb = false;
+        public int jumpCount {
+            get => m_jumpCount;
+            set {
+                if (m_jumpCount != value) {
+                    m_jumpCount = value;
+                    onJumpCountChanged?.Invoke();
+                }
+            }
+        }
+        [SerializeField]
+        int m_jumpCount = 1;
         public int ammoCount {
             get => m_ammoCount;
             set {
@@ -63,6 +100,11 @@ namespace Runtime.Player {
             look = new Look(this, settings, input.Player, body, eyes);
             sonar = new Sonar(this, settings, input.Player, eyes);
             upgrades = new Upgrades(this, settings, input.Player);
+
+            onGainBurst += () => settings.onGainBurst.Invoke(gameObject);
+            onGainBomb += () => settings.onGainBomb.Invoke(gameObject);
+            onJumpCountChanged += () => settings.onJumpCountChanged.Invoke(gameObject);
+            onAmmoCountChanged += () => settings.onAmmoCountChanged.Invoke(gameObject);
         }
         void OnEnable() {
             input.Enable();
