@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6a24ac68f41b0428fd48df4180613f, type: 3}
   m_Name: Popup_GainBomb
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8324781835804591569, guid: 488a6026746ad434e84ae49c997f9024, type: 3}
   asChild: 0
   destroyLater: 1
   destructionTimeout: 5

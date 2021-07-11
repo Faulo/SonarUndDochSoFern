@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6a24ac68f41b0428fd48df4180613f, type: 3}
   m_Name: Popup_GainDoubleJump
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 9154533489904417623, guid: 384150d6aaad7004f93d1df9d51107b9, type: 3}
   asChild: 0
   destroyLater: 1
   destructionTimeout: 5
