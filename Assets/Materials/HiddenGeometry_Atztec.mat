@@ -86,7 +86,7 @@ Material:
     - Dithering: 1.5
     - Dithing: 2
     - FresnelPower: 0
-    - Tiling: 10
+    - Tiling: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

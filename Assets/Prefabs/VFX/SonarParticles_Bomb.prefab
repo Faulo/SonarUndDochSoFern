@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 4387730993513444478}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &187148532633991820
 MeshRenderer:
@@ -172,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.size
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 2000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5524985771003295462, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
@@ -338,6 +338,34 @@ PrefabInstance:
       propertyPath: renderer
       value: 
       objectReference: {fileID: 187148532633991820}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 0afa7b9d1ea61f547a44ae9e2618d23b, type: 2}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Runtime.PlaySFX, Runtime
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106325534581906208, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
+      propertyPath: onCollision.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0db7d135af7bafa4088b03165336759c, type: 3}
 --- !u!1 &4387730993513444467 stripped

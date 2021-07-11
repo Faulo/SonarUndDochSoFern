@@ -21,12 +21,17 @@ namespace Runtime.Player {
         public Vector3 currentVelocity;
         Vector3 acceleration;
 
-        bool intendsToJump;
+        bool hasStartedJump;
         JumpState jumpState;
         float jumpTimer;
+        int jumpCount;
         float currentSpeed => input.Sprint.phase == InputActionPhase.Started
             ? settings.runningSpeed
             : settings.walkingSpeed;
+
+        float stepDistance;
+        float airDistance;
+        Vector2 position2D => new Vector2(character.transform.position.x, character.transform.position.z);
 
         public Movement(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
             this.avatar = avatar;
@@ -42,9 +47,10 @@ namespace Runtime.Player {
         }
 
         void RegisterInput() {
+            input.Jump.canceled += HandleJumpCancel;
         }
-
         void UnregisterInput() {
+            input.Jump.canceled -= HandleJumpCancel;
         }
 
         public void Update(float deltaTime) {
@@ -55,13 +61,32 @@ namespace Runtime.Player {
             currentVelocity = Vector3.SmoothDamp(currentVelocity, targetVelocity, ref acceleration, settings.smoothingTime);
 
             float gravity = Physics.gravity.y * deltaTime;
+            if (jumpState != JumpState.NotJumping) {
+                gravity *= settings.jumpGravityMultiplier;
+            }
             if (character.isGrounded && currentVelocity.y <= gravity) {
                 currentVelocity.y = gravity;
             } else {
                 currentVelocity.y += gravity;
             }
 
+            var position = avatar.position;
             character.Move(currentVelocity * deltaTime);
+            ProcessStep(Vector3.Distance(position, avatar.position));
+        }
+
+        void ProcessStep(float deltaStep) {
+            if (!character.isGrounded) {
+                airDistance += deltaStep;
+                return;
+            }
+            stepDistance += airDistance;
+            stepDistance += deltaStep;
+            airDistance = 0;
+            if (stepDistance >= settings.metersPerStep) {
+                stepDistance = 0;
+                settings.onStep.Invoke(avatar.gameObject);
+            }
         }
 
         void CalculateTargetVelocity() {
@@ -80,7 +105,14 @@ namespace Runtime.Player {
         void ProcessJump() {
             switch (jumpState) {
                 case JumpState.NotJumping:
-                    if (character.isGrounded && input.Jump.phase == InputActionPhase.Started) {
+                    if (character.isGrounded) {
+                        jumpCount = 0;
+                    } else {
+                        jumpCount = Mathf.Max(jumpCount, 1);
+                    }
+                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Started && !hasStartedJump) {
+                        hasStartedJump = true;
+                        jumpCount++;
                         jumpTimer = 0;
                         jumpState = JumpState.ShortJump;
                         currentVelocity.x += targetMovement.x * settings.jumpStartSpeed.x;
@@ -113,13 +145,22 @@ namespace Runtime.Player {
                     JumpState.LongJump => settings.longJumpExecutionDuration,
                     _ => throw new NotImplementedException(),
                 };
+                var stopSpeed = jumpState switch {
+                    JumpState.ShortJump => settings.jumpShortStopSpeed,
+                    JumpState.MediumJump => settings.jumpMediumStopSpeed,
+                    JumpState.LongJump => settings.jumpLongStopSpeed,
+                    _ => throw new NotImplementedException(),
+                };
                 if (jumpTimer >= duration) {
                     jumpState = JumpState.NotJumping;
-                    currentVelocity.x += targetMovement.x * settings.jumpStopSpeed.x;
-                    currentVelocity.y = Math.Min(currentVelocity.y, settings.jumpStopSpeed.y);
-                    currentVelocity.z += targetMovement.y * settings.jumpStopSpeed.x;
+                    currentVelocity.x += targetMovement.x * stopSpeed.x;
+                    currentVelocity.y = Math.Min(currentVelocity.y, stopSpeed.y);
+                    currentVelocity.z += targetMovement.y * stopSpeed.x;
                 }
             }
+        }
+        void HandleJumpCancel(InputAction.CallbackContext obj) {
+            hasStartedJump = false;
         }
     }
 }

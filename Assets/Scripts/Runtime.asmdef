@@ -8,7 +8,8 @@
         "Unity.TextMeshPro",
         "Slothsoft.UnityExtensions.Runtime",
         "Unity.RenderPipelines.Universal.Runtime",
-        "Unity.RenderPipelines.Core.Runtime"
+        "Unity.RenderPipelines.Core.Runtime",
+        "MyBox"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

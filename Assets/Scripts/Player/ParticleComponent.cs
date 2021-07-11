@@ -1,16 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Runtime.Player {
     public class ParticleComponent : MonoBehaviour {
         [SerializeField]
-        ParticleSystem sonarSystem = default;
+        public ParticleSystem sonarSystem = default;
         [SerializeField]
-        ParticleSystem paintSystem = default;
+        public ParticleSystem paintSystem = default;
         [SerializeField]
         new Renderer renderer = default;
         [SerializeField]
         Vector3 paintOffset = Vector3.zero;
+        [SerializeField]
+        float killY = 0;
+        [SerializeField]
+        UnityEvent<GameObject> onCollision = new UnityEvent<GameObject>();
 
         List<ParticleCollisionEvent> events = new List<ParticleCollisionEvent>(1024);
         void OnParticleCollision(GameObject other) {
@@ -26,6 +31,14 @@ namespace Runtime.Player {
             }
         }
         void OnCollisionEnter(Collision collision) {
+            Collide();
+        }
+        void Update() {
+            if (transform.position.y < killY) {
+                Destroy(gameObject);
+            }
+        }
+        void Collide() {
             if (TryGetComponent<Rigidbody>(out var rigidbody)) {
                 var main = sonarSystem.main;
                 main.emitterVelocity = rigidbody.velocity;
@@ -35,6 +48,7 @@ namespace Runtime.Player {
             if (renderer) {
                 renderer.enabled = false;
             }
+            onCollision.Invoke(gameObject);
         }
     }
 }

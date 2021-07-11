@@ -39,18 +39,148 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   smoothingTime: 0.125
-  jumpStartSpeed: {x: -4, y: 12}
-  jumpStopSpeed: {x: 2, y: 4}
+  metersPerStep: 2
+  jumpGravityMultiplier: 0.75
+  jumpStartSpeed: {x: -2, y: 9}
+  jumpShortStopSpeed: {x: 2, y: 4}
+  jumpMediumStopSpeed: {x: 1, y: 4}
+  jumpLongStopSpeed: {x: -1, y: 4}
   shortJumpInputDuration: 0.1
   mediumJumpInputDuration: 0.2
-  shortJumpExecutionDuration: 0.15
-  mediumJumpExecutionDuration: 0.3
+  shortJumpExecutionDuration: 0.1
+  mediumJumpExecutionDuration: 0.2
   longJumpExecutionDuration: 0.4
   cameraSpeed: {x: 0.25, y: 0.25}
   cameraSmoothing: 0.0625
   cameraMinX: -120
   cameraMaxX: 60
-  sonarPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
-  specialPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
+  burstPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
+  bombPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
+  paintPrefab: {fileID: 2969820562567419476, guid: 5b8020782ff4c03488e3709921065eb6, type: 3}
   specialEjectSpeed: {x: 0, y: 5, z: 15}
   sonarBurstCount: 100
+  paintPerAmmoCount: 10000
+  vignetteOverAmmo:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.03395462
+      value: 0.125
+      inSlope: 0.5195771
+      outSlope: 0.60447526
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050383355
+    - serializedVersion: 3
+      time: 1
+      value: 0.75
+      inSlope: 0.60447526
+      outSlope: 1.5878023
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.028477512
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sonarStartingPitch: 20
+  sonarDeltaPitch: 1
+  powerMagnetRadius: 1.25
+  powerMagnetTime: 0.125
+  powerMagnetSpeed: 100
+  powerCollectRadius: 0.5
+  powerLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  goalLayer: 14
+  onGainBurst:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1d090f09a7e5c3c44a989ef8aa34bda5, type: 2}
+        m_TargetAssemblyTypeName: Runtime.InstantiateObject, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onGainBomb:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 62d308ee36bee6e43b34a8979ef3c656, type: 2}
+        m_TargetAssemblyTypeName: Runtime.InstantiateObject, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onJumpCountChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 68ac7dfa320d2a04a9ba1b87b0d7840a, type: 2}
+        m_TargetAssemblyTypeName: Runtime.InstantiateObject, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAmmoCountChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 5e0dc4ecaed27694aa1640dc1f4c2846, type: 2}
+        m_TargetAssemblyTypeName: Runtime.InstantiateObject, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f92485f96004d34438ee2db1e5693b9b, type: 2}
+        m_TargetAssemblyTypeName: Runtime.PlaySFX, Runtime
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTouchGoal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fc7578cd7a44e2a41a6d52dd1e87e93c, type: 2}
+        m_TargetAssemblyTypeName: Runtime.LoadScene, Runtime
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

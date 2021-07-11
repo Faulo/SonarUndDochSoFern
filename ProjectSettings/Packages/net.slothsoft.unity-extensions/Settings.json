@@ -6,7 +6,7 @@
             {
                 "type": "Slothsoft.UnityExtensions.Editor.PackageSettings.CSharpSettings, Slothsoft.UnityExtensions.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "m_expandableSettings",
-                "value": "{\"m_Value\":{\"addNamespaceToCSharpFiles\":true,\"rewriteProjectFiles\":true,\"projectFileSettings\":[{\"affectedAssemblies\":[{\"fileID\":5897886265953266890,\"guid\":\"fca3cd90ba731094fbfc4ac9ecabb8a1\",\"type\":3}],\"setCSharpVersionTo\":\"8.0\",\"m_setWarningLevelTo\":4}]}}"
+                "value": "{\"m_Value\":{\"addNamespaceToCSharpFiles\":true,\"rewriteProjectFiles\":true,\"projectFileSettings\":[{\"affectedAssemblies\":[{\"fileID\":5897886265953266890,\"guid\":\"fca3cd90ba731094fbfc4ac9ecabb8a1\",\"type\":3}],\"setCSharpVersionTo\":\"8.0\",\"m_setWarningLevelTo\":4},{\"affectedAssemblies\":[{\"fileID\":5897886265953266890,\"guid\":\"538892a2d996ca24ba61f1a5328b78da\",\"type\":3}],\"setCSharpVersionTo\":\"8.0\",\"m_setWarningLevelTo\":0}]}}"
             },
             {
                 "type": "Slothsoft.UnityExtensions.Editor.PackageSettings.ExpandableSettings, Slothsoft.UnityExtensions.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
