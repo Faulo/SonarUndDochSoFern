@@ -26,6 +26,8 @@ namespace Runtime.Player {
         CinemachineVirtualCamera cinemachineCamera = default;
         [SerializeField, Expandable]
         VolumeProfile globalVolume = default;
+        [SerializeField, Expandable]
+        AudioSource sonarAudio = default;
 
         [Header("Unity Configuration")]
         [SerializeField]
@@ -101,7 +103,7 @@ namespace Runtime.Player {
             input = new AvatarInput();
             movement = new Movement(this, settings, input.Player, character);
             look = new Look(this, settings, input.Player, body, eyes);
-            sonar = new Sonar(this, settings, input.Player, eyes, globalVolume);
+            sonar = new Sonar(this, settings, input.Player, eyes, globalVolume, sonarAudio);
             upgrades = new Upgrades(this, settings, input.Player);
 
             onGainBurst += () => settings.onGainBurst.Invoke(gameObject);

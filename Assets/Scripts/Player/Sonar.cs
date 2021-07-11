@@ -11,6 +11,7 @@ namespace Runtime.Player {
         readonly AvatarInput.PlayerActions input;
         readonly Transform eyes;
         readonly Vignette vignette;
+        readonly AudioSource sonarAudio;
 
         ParticleSystem paintParticles;
         ParticleSystem.MainModule paintMain;
@@ -20,12 +21,13 @@ namespace Runtime.Player {
         ParticleSystem.EmissionModule burstEmission;
         float normalizedAmmo => (float)paintParticles.particleCount / paintMain.maxParticles;
 
-        public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes, VolumeProfile volume) {
+        public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes, VolumeProfile volume, AudioSource sonarAudio) {
             this.avatar = avatar;
             this.settings = settings;
             this.input = input;
             this.eyes = eyes;
             volume.TryGet(out vignette);
+            this.sonarAudio = sonarAudio;
 
             RegisterInput();
             SetupParticles();
@@ -81,6 +83,7 @@ namespace Runtime.Player {
         public void Update(float deltaTime) {
             burstMain.emitterVelocity = avatar.velocity;
             vignette.intensity.Override(settings.vignetteOverAmmo.Evaluate(normalizedAmmo));
+            sonarAudio.pitch += UnityEngine.Random.Range(-settings.sonarDeltaPitch, settings.sonarDeltaPitch) * deltaTime;
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
             if (!avatar.hasBurst) {
@@ -88,9 +91,12 @@ namespace Runtime.Player {
             }
             burstEmission.enabled = true;
             burstParticles.Emit(settings.sonarBurstCount);
+            sonarAudio.Play();
+            sonarAudio.pitch = settings.sonarStartingPitch;
         }
         void HandleSonarCancel(InputAction.CallbackContext context) {
             burstEmission.enabled = false;
+            sonarAudio.Stop();
         }
         void HandleSpecialStart(InputAction.CallbackContext context) {
             if (!avatar.hasBomb) {

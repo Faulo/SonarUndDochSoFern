@@ -34,7 +34,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sonar
+  m_Name: SonarBomb
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: cd92afe4f93b4fe49bab5673178205bb
   m_Children: []
@@ -85,6 +85,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-1470351343542133079
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 5bc33cf16bf287e43a081ce11096a31c
+  m_EffectName: Attenuation
+  m_MixLevel: b72bd975e9164574384a5c69fb5893ab
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-672112381251190196
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -127,6 +141,7 @@ AudioMixerController:
     - 7ffb30e4ef9582048a930033de9982e8
     - cd92afe4f93b4fe49bab5673178205bb
     - ca2bd5cbedd627f4ca8ba8e1ccdfc232
+    - 3788947ef37038a4a95a6bc46ec4070d
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -143,6 +158,7 @@ AudioMixerGroupController:
   - {fileID: -2070947749612860503}
   - {fileID: -3386068962553951211}
   - {fileID: -672112381251190196}
+  - {fileID: 3492677921381242031}
   - {fileID: -6839502241507279269}
   m_Volume: 1e24a6de1090d5545b9213a6b237ed06
   m_Pitch: c2edda66b2e951746a255b88e8788d62
@@ -177,7 +193,9 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: e0f30c6ed66faa944b530e10d46c2187
   m_FloatValues:
-    0233b95ca21da1c44a3065d4110c649b: -10.345207
+    6af2ee40895c45249b8bb63171b2c2dc: 9.757735
+    51fa9ca2ee49c8d469b52800acbd96d0: -14.96685
+    0233b95ca21da1c44a3065d4110c649b: -4.5603485
   m_TransitionOverrides: {}
 --- !u!244 &187258000140808897
 AudioMixerEffectController:
@@ -193,6 +211,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &3492677921381242031
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SonarBurst
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 3788947ef37038a4a95a6bc46ec4070d
+  m_Children: []
+  m_Volume: 51fa9ca2ee49c8d469b52800acbd96d0
+  m_Pitch: 164ea31a60961554b8a2203141ff1f1f
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -1470351343542133079}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &4989984296630749174
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

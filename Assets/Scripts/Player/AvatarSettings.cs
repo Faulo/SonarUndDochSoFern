@@ -64,6 +64,10 @@ namespace Runtime.Player {
         public int paintPerAmmoCount = 10000;
         [SerializeField]
         public AnimationCurve vignetteOverAmmo = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField, Range(-100, 100)]
+        public float sonarStartingPitch = 2;
+        [SerializeField, Range(0, 10)]
+        public float sonarDeltaPitch = 1;
 
         [Header("Power Ups")]
         [SerializeField, Range(0, 100)]

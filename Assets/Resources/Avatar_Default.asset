@@ -84,8 +84,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sonarStartingPitch: 20
+  sonarDeltaPitch: 1
   powerMagnetRadius: 1.25
-  powerMagnetTime: 0.25
+  powerMagnetTime: 0.125
   powerMagnetSpeed: 100
   powerCollectRadius: 0.5
   powerLayer:
