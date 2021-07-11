@@ -14,5 +14,6 @@ namespace Runtime.Player {
         bool hasBomb { get; set; }
         int jumpCount { get; set; }
         int ammoCount { get; set; }
+        bool isRunning { get; }
     }
 }
