@@ -77,6 +77,10 @@ namespace Runtime.Player {
         [SerializeField]
         public LayerMask powerLayer = default;
 
+        [Header("Goal")]
+        [SerializeField, Layer]
+        public int goalLayer = 0;
+
         [Header("Events")]
         [SerializeField]
         public UnityEvent<GameObject> onGainBurst = new UnityEvent<GameObject>();
@@ -88,5 +92,7 @@ namespace Runtime.Player {
         public UnityEvent<GameObject> onAmmoCountChanged = new UnityEvent<GameObject>();
         [SerializeField]
         public UnityEvent<GameObject> onStep = new UnityEvent<GameObject>();
+        [SerializeField]
+        public UnityEvent<GameObject> onTouchGoal = new UnityEvent<GameObject>();
     }
 }

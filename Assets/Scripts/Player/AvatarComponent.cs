@@ -143,6 +143,9 @@ namespace Runtime.Player {
         }
         void OnControllerColliderHit(ControllerColliderHit hit) {
             onControllerColliderHit?.Invoke(hit);
+            if (hit.collider.gameObject.layer == settings.goalLayer) {
+                settings.onTouchGoal.Invoke(gameObject);
+            }
         }
     }
 }
