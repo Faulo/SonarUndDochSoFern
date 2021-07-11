@@ -55,7 +55,7 @@ MonoBehaviour:
   cameraMinX: -120
   cameraMaxX: 60
   defaultFieldOfView: 75
-  runningFieldOfView: 90
+  runningFieldOfView: 85
   fieldOfViewSmoothingTime: 0.25
   burstPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
   bombPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
