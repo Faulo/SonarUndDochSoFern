@@ -34,6 +34,7 @@ namespace Runtime.Player {
         public void Dispose() {
             UnregisterInput();
             DestroyParticles();
+            vignette.intensity.Override(0);
         }
 
         void SetupParticles() {

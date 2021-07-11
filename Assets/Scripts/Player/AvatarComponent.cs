@@ -115,6 +115,11 @@ namespace Runtime.Player {
         void OnDisable() {
             input.Disable();
         }
+        void OnDestroy() {
+            movement.Dispose();
+            look.Dispose();
+            sonar.Dispose();
+        }
         void Update() {
             if (updateMethod == UpdateMethod.Update) {
                 UpdateAvatar(Time.deltaTime);
