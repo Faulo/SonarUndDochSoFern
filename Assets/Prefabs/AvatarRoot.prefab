@@ -349,6 +349,10 @@ MonoBehaviour:
   unityCamera: {fileID: 5898451250781030298}
   cinemachineCamera: {fileID: 5898451251239731600}
   updateMethod: 0
+  m_hasBurst: 1
+  m_hasBomb: 1
+  m_jumpCount: 2
+  m_ammoCount: 1
 --- !u!143 &5898451251030740944
 CharacterController:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace Runtime.Player {
         public Vector3 currentVelocity;
         Vector3 acceleration;
 
-        bool intendsToJump;
+        bool hasStartedJump;
         JumpState jumpState;
         float jumpTimer;
         int jumpCount;
@@ -47,9 +47,10 @@ namespace Runtime.Player {
         }
 
         void RegisterInput() {
+            input.Jump.canceled += HandleJumpCancel;
         }
-
         void UnregisterInput() {
+            input.Jump.canceled -= HandleJumpCancel;
         }
 
         public void Update(float deltaTime) {
@@ -106,8 +107,11 @@ namespace Runtime.Player {
                 case JumpState.NotJumping:
                     if (character.isGrounded) {
                         jumpCount = 0;
+                    } else {
+                        jumpCount = Mathf.Max(jumpCount, 1);
                     }
-                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Started) {
+                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Started && !hasStartedJump) {
+                        hasStartedJump = true;
                         jumpCount++;
                         jumpTimer = 0;
                         jumpState = JumpState.ShortJump;
@@ -154,6 +158,9 @@ namespace Runtime.Player {
                     currentVelocity.z += targetMovement.y * stopSpeed.x;
                 }
             }
+        }
+        void HandleJumpCancel(InputAction.CallbackContext obj) {
+            hasStartedJump = false;
         }
     }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
   paintPrefab: {fileID: 2969820562567419476, guid: 5b8020782ff4c03488e3709921065eb6, type: 3}
   specialEjectSpeed: {x: 0, y: 5, z: 15}
   sonarBurstCount: 100
-  paintPerAmmoCount: 10000
+  paintPerAmmoCount: 50000
   powerMagnetRadius: 10
   powerMagnetTime: 1
   powerMagnetSpeed: 10
