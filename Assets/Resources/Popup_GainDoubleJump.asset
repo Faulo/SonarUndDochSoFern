@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 9154533489904417623, guid: 384150d6aaad7004f93d1df9d51107b9, type: 3}
   asChild: 0
   destroyLater: 1
-  destructionTimeout: 5
+  destructionTimeout: 3
