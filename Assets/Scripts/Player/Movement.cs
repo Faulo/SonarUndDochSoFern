@@ -16,6 +16,7 @@ namespace Runtime.Player {
         AvatarInput.PlayerActions input;
         CharacterController character;
 
+        Vector2 intendedMovement;
         Vector3 targetVelocity;
         Vector2 targetMovement;
         public Vector3 currentVelocity;
@@ -25,12 +26,14 @@ namespace Runtime.Player {
         JumpState jumpState;
         float jumpTimer;
         int jumpCount;
-        float currentSpeed => input.Sprint.phase == InputActionPhase.Started
+        float currentSpeed => isRunning
             ? settings.runningSpeed
             : settings.walkingSpeed;
 
         float stepDistance;
         float airDistance;
+        public bool isRunning => input.Sprint.phase == InputActionPhase.Started && intendedMovement != Vector2.zero;
+
         Vector2 position2D => new Vector2(character.transform.position.x, character.transform.position.z);
 
         public Movement(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
@@ -90,8 +93,8 @@ namespace Runtime.Player {
         }
 
         void CalculateTargetVelocity() {
-            var movement = input.Movement.ReadValue<Vector2>();
-            targetVelocity = character.transform.rotation * new Vector3(movement.x, 0, movement.y);
+            intendedMovement = input.Movement.ReadValue<Vector2>();
+            targetVelocity = character.transform.rotation * new Vector3(intendedMovement.x, 0, intendedMovement.y);
             targetVelocity *= currentSpeed;
             if (targetVelocity != Vector3.zero) {
                 float forward = Vector3.Dot(targetVelocity.normalized, character.transform.forward);

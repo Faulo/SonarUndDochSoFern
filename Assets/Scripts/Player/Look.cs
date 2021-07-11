@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ namespace Runtime.Player {
         readonly AvatarInput.PlayerActions input;
         readonly Transform body;
         readonly Transform eyes;
+        readonly CinemachineVirtualCamera cinemachine;
 
         float horizontalAngle;
         float horizontalSpeed;
@@ -23,12 +25,13 @@ namespace Runtime.Player {
                 : CursorLockMode.None;
         }
 
-        public Look(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform body, Transform eyes) {
+        public Look(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform body, Transform eyes, CinemachineVirtualCamera cinemachine) {
             this.avatar = avatar;
             this.settings = settings;
             this.input = input;
             this.body = body;
             this.eyes = eyes;
+            this.cinemachine = cinemachine;
 
             RegisterInput();
         }
@@ -71,7 +74,22 @@ namespace Runtime.Player {
                     deltaTime
                 );
                 eyes.localRotation = Quaternion.Euler(verticalAngle, 0, 0);
+                UpdateFOV();
             }
+        }
+
+        float fieldOfView {
+            get => cinemachine.m_Lens.FieldOfView;
+            set => cinemachine.m_Lens.FieldOfView = value;
+        }
+        float fieldOfViewVelocity;
+        void UpdateFOV() {
+            fieldOfView = Mathf.SmoothDamp(
+                fieldOfView,
+                avatar.isRunning ? settings.runningFieldOfView : settings.defaultFieldOfView,
+                ref fieldOfViewVelocity,
+                settings.fieldOfViewSmoothingTime
+            );
         }
 
         void HandleSonarStart(InputAction.CallbackContext context) {

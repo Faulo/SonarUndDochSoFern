@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Avatar_Default
   m_EditorClassIdentifier: 
   walkingSpeed: 5
-  runningSpeed: 12
+  runningSpeed: 10
   speedOverForward:
     serializedVersion: 2
     m_Curve:
@@ -54,6 +54,9 @@ MonoBehaviour:
   cameraSmoothing: 0.0625
   cameraMinX: -120
   cameraMaxX: 60
+  defaultFieldOfView: 75
+  runningFieldOfView: 90
+  fieldOfViewSmoothingTime: 0.25
   burstPrefab: {fileID: 4387730993513444465, guid: 1bfb70bcc7c8d714bbf65699feaaab76, type: 3}
   bombPrefab: {fileID: 4387730993513444465, guid: 476c4503969e10548b1342e261f89685, type: 3}
   paintPrefab: {fileID: 2969820562567419476, guid: 5b8020782ff4c03488e3709921065eb6, type: 3}

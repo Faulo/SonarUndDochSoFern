@@ -21,8 +21,6 @@ namespace Runtime.Player {
         [SerializeField, Expandable]
         Transform eyes = default;
         [SerializeField, Expandable]
-        Camera unityCamera = default;
-        [SerializeField, Expandable]
         CinemachineVirtualCamera cinemachineCamera = default;
         [SerializeField, Expandable]
         VolumeProfile globalVolume = default;
@@ -49,6 +47,7 @@ namespace Runtime.Player {
         public Vector3 velocity => movement.currentVelocity;
         public Vector3 position => eyes.position;
         public Quaternion rotation => eyes.rotation;
+        public bool isRunning => movement.isRunning;
         public bool hasBurst {
             get => m_hasBurst;
             set {
@@ -102,7 +101,7 @@ namespace Runtime.Player {
         void Awake() {
             input = new AvatarInput();
             movement = new Movement(this, settings, input.Player, character);
-            look = new Look(this, settings, input.Player, body, eyes);
+            look = new Look(this, settings, input.Player, body, eyes, cinemachineCamera);
             sonar = new Sonar(this, settings, input.Player, eyes, globalVolume, sonarAudio);
             upgrades = new Upgrades(this, settings, input.Player);
 

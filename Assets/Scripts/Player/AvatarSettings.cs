@@ -48,6 +48,12 @@ namespace Runtime.Player {
         public float cameraMinX = -90;
         [SerializeField, Range(-180, 180)]
         public float cameraMaxX = 90;
+        [SerializeField, Range(0, 180)]
+        public float defaultFieldOfView = 75;
+        [SerializeField, Range(0, 180)]
+        public float runningFieldOfView = 90;
+        [SerializeField, Range(0, 10)]
+        public float fieldOfViewSmoothingTime = 1;
 
         [Header("Sonar")]
         [SerializeField, Expandable]
