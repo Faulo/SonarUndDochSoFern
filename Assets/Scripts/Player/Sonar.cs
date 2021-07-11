@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace Runtime.Player {
     public class Sonar : IUpdatable, IDisposable {
@@ -8,6 +10,7 @@ namespace Runtime.Player {
         readonly AvatarSettings settings;
         readonly AvatarInput.PlayerActions input;
         readonly Transform eyes;
+        readonly Vignette vignette;
 
         ParticleSystem paintParticles;
         ParticleSystem.MainModule paintMain;
@@ -15,12 +18,14 @@ namespace Runtime.Player {
         ParticleSystem burstParticles;
         ParticleSystem.MainModule burstMain;
         ParticleSystem.EmissionModule burstEmission;
+        float normalizedAmmo => (float)paintParticles.particleCount / paintMain.maxParticles;
 
-        public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes) {
+        public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes, VolumeProfile volume) {
             this.avatar = avatar;
             this.settings = settings;
             this.input = input;
             this.eyes = eyes;
+            volume.TryGet(out vignette);
 
             RegisterInput();
             SetupParticles();
@@ -74,6 +79,7 @@ namespace Runtime.Player {
 
         public void Update(float deltaTime) {
             burstMain.emitterVelocity = avatar.velocity;
+            vignette.intensity.Override(settings.vignetteOverAmmo.Evaluate(normalizedAmmo));
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
             if (!avatar.hasBurst) {

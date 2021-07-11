@@ -59,7 +59,31 @@ MonoBehaviour:
   paintPrefab: {fileID: 2969820562567419476, guid: 5b8020782ff4c03488e3709921065eb6, type: 3}
   specialEjectSpeed: {x: 0, y: 5, z: 15}
   sonarBurstCount: 100
-  paintPerAmmoCount: 50000
+  paintPerAmmoCount: 10000
+  vignetteOverAmmo:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.03395462
+      value: 0.125
+      inSlope: 0.5195771
+      outSlope: 0.60447526
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050383355
+    - serializedVersion: 3
+      time: 1
+      value: 0.75
+      inSlope: 0.60447526
+      outSlope: 1.5878023
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.028477512
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   powerMagnetRadius: 2
   powerMagnetTime: 0.25
   powerMagnetSpeed: 100

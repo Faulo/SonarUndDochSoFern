@@ -2,6 +2,7 @@ using System;
 using Cinemachine;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Runtime.Player {
     public class AvatarComponent : MonoBehaviour, IAvatar {
@@ -23,6 +24,8 @@ namespace Runtime.Player {
         Camera unityCamera = default;
         [SerializeField, Expandable]
         CinemachineVirtualCamera cinemachineCamera = default;
+        [SerializeField, Expandable]
+        VolumeProfile globalVolume = default;
 
         [Header("Unity Configuration")]
         [SerializeField]
@@ -98,7 +101,7 @@ namespace Runtime.Player {
             input = new AvatarInput();
             movement = new Movement(this, settings, input.Player, character);
             look = new Look(this, settings, input.Player, body, eyes);
-            sonar = new Sonar(this, settings, input.Player, eyes);
+            sonar = new Sonar(this, settings, input.Player, eyes, globalVolume);
             upgrades = new Upgrades(this, settings, input.Player);
 
             onGainBurst += () => settings.onGainBurst.Invoke(gameObject);

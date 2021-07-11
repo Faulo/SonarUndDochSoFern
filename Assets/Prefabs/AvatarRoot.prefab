@@ -348,6 +348,7 @@ MonoBehaviour:
   eyes: {fileID: 5898451250273168144}
   unityCamera: {fileID: 5898451250781030298}
   cinemachineCamera: {fileID: 5898451251239731600}
+  globalVolume: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
   updateMethod: 0
   m_hasBurst: 0
   m_hasBomb: 0
