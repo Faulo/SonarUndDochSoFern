@@ -86,10 +86,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   sonarStartingPitch: 20
   sonarDeltaPitch: 1
-  powerMagnetRadius: 1.25
+  powerMagnetRadius: 1.5
   powerMagnetTime: 0.125
   powerMagnetSpeed: 100
-  powerCollectRadius: 0.5
+  powerCollectRadius: 1
   powerLayer:
     serializedVersion: 2
     m_Bits: 8192
