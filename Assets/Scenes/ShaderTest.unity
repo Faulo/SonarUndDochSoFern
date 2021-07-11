@@ -2096,5 +2096,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlasmaDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 7961243592635621278, guid: 6913d7fdfa499ac41a08c96edb3f4922, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6913d7fdfa499ac41a08c96edb3f4922, type: 3}
