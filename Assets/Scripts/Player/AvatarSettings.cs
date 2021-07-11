@@ -42,9 +42,11 @@ namespace Runtime.Player {
 
         [Header("Sonar")]
         [SerializeField, Expandable]
-        public ParticleSystem sonarPrefab = default;
+        public ParticleSystem burstPrefab = default;
         [SerializeField, Expandable]
-        public ParticleSystem specialPrefab = default;
+        public ParticleSystem bombPrefab = default;
+        [SerializeField, Expandable]
+        public ParticleSystem paintPrefab = default;
         [SerializeField]
         public Vector3 specialEjectSpeed = Vector3.forward;
         [SerializeField, Range(0, 10000)]

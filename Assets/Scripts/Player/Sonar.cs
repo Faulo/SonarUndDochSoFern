@@ -9,7 +9,8 @@ namespace Runtime.Player {
         readonly AvatarInput.PlayerActions input;
         readonly Transform eyes;
 
-        ParticleSystem particles;
+        ParticleSystem paintParticles;
+        ParticleSystem burstParticles;
         ParticleSystem.MainModule particlesMain;
         ParticleSystem.EmissionModule particlesEmission;
 
@@ -20,16 +21,28 @@ namespace Runtime.Player {
             this.eyes = eyes;
 
             RegisterInput();
-            particles = UnityEngine.Object.Instantiate(settings.sonarPrefab, eyes);
-            particlesMain = particles.main;
-            particlesEmission = particles.emission;
-
-            particlesEmission.enabled = false;
+            SetupParticles();
         }
 
         public void Dispose() {
             UnregisterInput();
-            UnityEngine.Object.Destroy(particles.gameObject);
+            DestroyParticles();
+        }
+
+        void SetupParticles() {
+            paintParticles = UnityEngine.Object.Instantiate(settings.paintPrefab, eyes);
+            burstParticles = UnityEngine.Object.Instantiate(settings.burstPrefab, eyes);
+            if (burstParticles.TryGetComponent<ParticleComponent>(out var particles)) {
+                particles.paintSystem = paintParticles;
+            }
+            particlesMain = burstParticles.main;
+            particlesEmission = burstParticles.emission;
+
+            particlesEmission.enabled = false;
+        }
+        void DestroyParticles() {
+            UnityEngine.Object.Destroy(burstParticles.gameObject);
+            UnityEngine.Object.Destroy(paintParticles.gameObject);
         }
 
         void RegisterInput() {
@@ -51,13 +64,16 @@ namespace Runtime.Player {
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
             particlesEmission.enabled = true;
-            particles.Emit(settings.sonarBurstCount);
+            burstParticles.Emit(settings.sonarBurstCount);
         }
         void HandleSonarCancel(InputAction.CallbackContext context) {
             particlesEmission.enabled = false;
         }
         void HandleSpecialStart(InputAction.CallbackContext context) {
-            var special = UnityEngine.Object.Instantiate(settings.specialPrefab, avatar.position, avatar.rotation);
+            var special = UnityEngine.Object.Instantiate(settings.bombPrefab, avatar.position, avatar.rotation);
+            if (special.TryGetComponent<ParticleComponent>(out var particles)) {
+                particles.paintSystem = paintParticles;
+            }
             if (special.TryGetComponent<Rigidbody>(out var rigidbody)) {
                 rigidbody.velocity = avatar.velocity + (avatar.rotation * settings.specialEjectSpeed);
             }

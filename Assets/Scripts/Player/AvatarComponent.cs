@@ -9,7 +9,6 @@ namespace Runtime.Player {
             Update,
             FixedUpdate,
             LateUpdate,
-            SmartUpdate,
         };
         [Header("MonoBehaviour Configuration")]
         [SerializeField, Expandable]
@@ -33,6 +32,7 @@ namespace Runtime.Player {
         Movement movement;
         Look look;
         Sonar sonar;
+        Upgrades upgrades;
 
         public event Action<ControllerColliderHit> onControllerColliderHit;
 
@@ -40,6 +40,10 @@ namespace Runtime.Player {
         public Vector3 velocity => movement.currentVelocity;
         public Vector3 position => eyes.position;
         public Quaternion rotation => eyes.rotation;
+        public bool hasBurst { get; set; } = true;
+        public bool hasBomb { get; set; } = true;
+        public int jumpCount { get; set; } = 2;
+        public int ammoCount { get; set; } = 2;
 
 
         void Awake() {
@@ -47,6 +51,7 @@ namespace Runtime.Player {
             movement = new Movement(this, settings, input.Player, character);
             look = new Look(this, settings, input.Player, body, eyes);
             sonar = new Sonar(this, settings, input.Player, eyes);
+            upgrades = new Upgrades(this, settings, input.Player);
         }
         void OnEnable() {
             input.Enable();
@@ -56,24 +61,24 @@ namespace Runtime.Player {
         }
         void Update() {
             if (updateMethod == UpdateMethod.Update) {
-                look.Update(Time.deltaTime);
-                movement.Update(Time.deltaTime);
-                sonar.Update(Time.deltaTime);
+                UpdateAvatar(Time.deltaTime);
             }
         }
         void FixedUpdate() {
             if (updateMethod == UpdateMethod.FixedUpdate) {
-                look.Update(Time.deltaTime);
-                movement.Update(Time.deltaTime);
-                sonar.Update(Time.deltaTime);
+                UpdateAvatar(Time.deltaTime);
             }
         }
         void LateUpdate() {
             if (updateMethod == UpdateMethod.LateUpdate) {
-                look.Update(Time.deltaTime);
-                movement.Update(Time.deltaTime);
-                sonar.Update(Time.deltaTime);
+                UpdateAvatar(Time.deltaTime);
             }
+        }
+        void UpdateAvatar(float deltaTime) {
+            upgrades.Update(deltaTime);
+            look.Update(deltaTime);
+            movement.Update(deltaTime);
+            sonar.Update(deltaTime);
         }
         void OnControllerColliderHit(ControllerColliderHit hit) {
             onControllerColliderHit?.Invoke(hit);

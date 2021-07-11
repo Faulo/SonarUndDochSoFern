@@ -3,11 +3,15 @@ using UnityEngine;
 
 namespace Runtime.Player {
     public interface IAvatar {
-        public event Action<ControllerColliderHit> onControllerColliderHit;
+        event Action<ControllerColliderHit> onControllerColliderHit;
 
-        public Vector3 forward { get; }
-        public Vector3 position { get; }
-        public Quaternion rotation { get; }
-        public Vector3 velocity { get; }
+        Vector3 forward { get; }
+        Vector3 position { get; }
+        Quaternion rotation { get; }
+        Vector3 velocity { get; }
+        bool hasBurst { get; set; }
+        bool hasBomb { get; set; }
+        int jumpCount { get; set; }
+        int ammoCount { get; set; }
     }
 }
