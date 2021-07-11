@@ -104,7 +104,7 @@ Material:
     - FresnelPower: 0
     - Metallic: 0
     - Smoothness: 0
-    - Tiling: 10
+    - Tiling: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1

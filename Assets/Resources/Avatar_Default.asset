@@ -60,7 +60,7 @@ MonoBehaviour:
   specialEjectSpeed: {x: 0, y: 5, z: 15}
   sonarBurstCount: 100
   paintPerAmmoCount: 50000
-  powerMagnetRadius: 10
+  powerMagnetRadius: 1
   powerMagnetTime: 1
   powerMagnetSpeed: 10
   powerCollectRadius: 1
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 1d090f09a7e5c3c44a989ef8aa34bda5, type: 2}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: Runtime.InstantiateObject, Runtime
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
