@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 5898451250781030299}
   - component: {fileID: 5898451250781030303}
   - component: {fileID: 5898451250781030300}
+  - component: {fileID: 1968338649726487561}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -297,6 +298,29 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!164 &1968338649726487561
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898451250781030296}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -300
+  m_DecayTime: 2.31
+  m_DecayHFRatio: 0.64
+  m_ReflectionsLevel: -711
+  m_ReverbLevel: 83
+  m_ReverbDelay: 0.017
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 6
 --- !u!1 &5898451251030740945
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +460,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7782027, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
