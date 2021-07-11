@@ -24,6 +24,7 @@ namespace Runtime.Player {
         bool intendsToJump;
         JumpState jumpState;
         float jumpTimer;
+        int jumpCount;
         float currentSpeed => input.Sprint.phase == InputActionPhase.Started
             ? settings.runningSpeed
             : settings.walkingSpeed;
@@ -80,7 +81,11 @@ namespace Runtime.Player {
         void ProcessJump() {
             switch (jumpState) {
                 case JumpState.NotJumping:
-                    if (character.isGrounded && input.Jump.phase == InputActionPhase.Started) {
+                    if (character.isGrounded) {
+                        jumpCount = 0;
+                    }
+                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Started) {
+                        jumpCount++;
                         jumpTimer = 0;
                         jumpState = JumpState.ShortJump;
                         currentVelocity.x += targetMovement.x * settings.jumpStartSpeed.x;

@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Runtime.Player {
     public interface IAvatar {
         event Action<ControllerColliderHit> onControllerColliderHit;
+        event Action onAmmoCountChanged;
 
         Vector3 forward { get; }
         Vector3 position { get; }

@@ -10,9 +10,11 @@ namespace Runtime.Player {
         readonly Transform eyes;
 
         ParticleSystem paintParticles;
+        ParticleSystem.MainModule paintMain;
+
         ParticleSystem burstParticles;
-        ParticleSystem.MainModule particlesMain;
-        ParticleSystem.EmissionModule particlesEmission;
+        ParticleSystem.MainModule burstMain;
+        ParticleSystem.EmissionModule burstEmission;
 
         public Sonar(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, Transform eyes) {
             this.avatar = avatar;
@@ -31,18 +33,29 @@ namespace Runtime.Player {
 
         void SetupParticles() {
             paintParticles = UnityEngine.Object.Instantiate(settings.paintPrefab, eyes);
+            paintMain = paintParticles.main;
+
             burstParticles = UnityEngine.Object.Instantiate(settings.burstPrefab, eyes);
             if (burstParticles.TryGetComponent<ParticleComponent>(out var particles)) {
                 particles.paintSystem = paintParticles;
             }
-            particlesMain = burstParticles.main;
-            particlesEmission = burstParticles.emission;
+            burstMain = burstParticles.main;
+            burstEmission = burstParticles.emission;
 
-            particlesEmission.enabled = false;
+            burstEmission.enabled = false;
+
+            avatar.onAmmoCountChanged += UpdateAmmo;
+            UpdateAmmo();
         }
+
+        void UpdateAmmo() {
+            paintMain.maxParticles = avatar.ammoCount * settings.paintPerAmmoCount;
+        }
+
         void DestroyParticles() {
             UnityEngine.Object.Destroy(burstParticles.gameObject);
             UnityEngine.Object.Destroy(paintParticles.gameObject);
+            avatar.onAmmoCountChanged -= UpdateAmmo;
         }
 
         void RegisterInput() {
@@ -60,16 +73,22 @@ namespace Runtime.Player {
         }
 
         public void Update(float deltaTime) {
-            particlesMain.emitterVelocity = avatar.velocity;
+            burstMain.emitterVelocity = avatar.velocity;
         }
         void HandleSonarStart(InputAction.CallbackContext context) {
-            particlesEmission.enabled = true;
+            if (!avatar.hasBurst) {
+                return;
+            }
+            burstEmission.enabled = true;
             burstParticles.Emit(settings.sonarBurstCount);
         }
         void HandleSonarCancel(InputAction.CallbackContext context) {
-            particlesEmission.enabled = false;
+            burstEmission.enabled = false;
         }
         void HandleSpecialStart(InputAction.CallbackContext context) {
+            if (!avatar.hasBomb) {
+                return;
+            }
             var special = UnityEngine.Object.Instantiate(settings.bombPrefab, avatar.position, avatar.rotation);
             if (special.TryGetComponent<ParticleComponent>(out var particles)) {
                 particles.paintSystem = paintParticles;

@@ -35,6 +35,7 @@ namespace Runtime.Player {
         Upgrades upgrades;
 
         public event Action<ControllerColliderHit> onControllerColliderHit;
+        public event Action onAmmoCountChanged;
 
         public Vector3 forward => eyes.forward;
         public Vector3 velocity => movement.currentVelocity;
@@ -43,7 +44,17 @@ namespace Runtime.Player {
         public bool hasBurst { get; set; } = true;
         public bool hasBomb { get; set; } = true;
         public int jumpCount { get; set; } = 2;
-        public int ammoCount { get; set; } = 2;
+        public int ammoCount {
+            get => m_ammoCount;
+            set {
+                if (m_ammoCount != value) {
+                    m_ammoCount = value;
+                    onAmmoCountChanged?.Invoke();
+                }
+            }
+        }
+        [SerializeField]
+        int m_ammoCount = 1;
 
 
         void Awake() {

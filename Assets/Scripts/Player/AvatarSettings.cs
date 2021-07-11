@@ -51,5 +51,19 @@ namespace Runtime.Player {
         public Vector3 specialEjectSpeed = Vector3.forward;
         [SerializeField, Range(0, 10000)]
         public int sonarBurstCount = 1000;
+        [SerializeField, Range(0, 100000)]
+        public int paintPerAmmoCount = 10000;
+
+        [Header("Power Ups")]
+        [SerializeField, Range(0, 100)]
+        public float powerMagnetRadius = 10;
+        [SerializeField, Range(0, 10)]
+        public float powerMagnetTime = 1;
+        [SerializeField, Range(0, 100)]
+        public float powerMagnetSpeed = 10;
+        [SerializeField, Range(0, 100)]
+        public float powerCollectRadius = 1;
+        [SerializeField]
+        public LayerMask powerLayer = default;
     }
 }
