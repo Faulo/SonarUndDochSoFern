@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.25
@@ -1758,6 +1758,7 @@ GameObject:
   - component: {fileID: 650530218}
   - component: {fileID: 650530217}
   - component: {fileID: 650530216}
+  - component: {fileID: 650530220}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1848,7 +1849,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 650530218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 650530220}
+        m_TargetAssemblyTypeName: Runtime.ExitGameComponent, Runtime
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &650530218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,6 +1900,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650530214}
   m_CullTransparentMesh: 1
+--- !u!114 &650530220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650530214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bcd7e2658d33e4daf2a6be07ff72db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670293642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,7 +2882,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 970195842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 57fa227e1d83d8b41b192a86dbf5fa4e, type: 2}
+        m_TargetAssemblyTypeName: Runtime.LoadScene, Runtime
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &970195842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5522,7 +5559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2068375396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 57fa227e1d83d8b41b192a86dbf5fa4e, type: 2}
+        m_TargetAssemblyTypeName: Runtime.LoadScene, Runtime
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2068375396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5969,7 +6018,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
