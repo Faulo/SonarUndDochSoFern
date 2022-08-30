@@ -32,7 +32,7 @@ namespace Runtime.Player {
 
         float stepDistance;
         float airDistance;
-        public bool isRunning => input.Sprint.phase == InputActionPhase.Started && intendedMovement != Vector2.zero;
+        public bool isRunning => input.Sprint.phase == InputActionPhase.Performed && intendedMovement != Vector2.zero;
 
         Vector2 position2D => new Vector2(character.transform.position.x, character.transform.position.z);
 
@@ -113,7 +113,7 @@ namespace Runtime.Player {
                     } else {
                         jumpCount = Mathf.Max(jumpCount, 1);
                     }
-                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Started && !hasStartedJump) {
+                    if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Performed && !hasStartedJump) {
                         hasStartedJump = true;
                         jumpCount++;
                         jumpTimer = 0;
@@ -125,13 +125,13 @@ namespace Runtime.Player {
                     break;
                 case JumpState.ShortJump:
                     jumpTimer += Time.deltaTime;
-                    if (jumpTimer >= settings.shortJumpInputDuration && input.Jump.phase == InputActionPhase.Started) {
+                    if (jumpTimer >= settings.shortJumpInputDuration && input.Jump.phase == InputActionPhase.Performed) {
                         jumpState = JumpState.MediumJump;
                     }
                     break;
                 case JumpState.MediumJump:
                     jumpTimer += Time.deltaTime;
-                    if (jumpTimer >= settings.mediumJumpInputDuration && input.Jump.phase == InputActionPhase.Started) {
+                    if (jumpTimer >= settings.mediumJumpInputDuration && input.Jump.phase == InputActionPhase.Performed) {
                         jumpState = JumpState.LongJump;
                     }
                     break;
