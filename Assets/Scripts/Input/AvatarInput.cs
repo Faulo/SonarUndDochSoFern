@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace SonarUndDochSoFern.Player
+namespace SonarUndDochSoFern.Input
 {
     public partial class @AvatarInput : IInputActionCollection2, IDisposable
     {

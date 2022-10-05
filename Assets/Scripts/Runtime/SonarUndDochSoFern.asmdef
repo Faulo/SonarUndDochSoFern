@@ -1,0 +1,24 @@
+{
+    "name": "SonarUndDochSoFern",
+    "rootNamespace": "",
+    "references": [
+        "Unity.InputSystem",
+        "Cinemachine",
+        "Unity.ProBuilder",
+        "Unity.TextMeshPro",
+        "Slothsoft.UnityExtensions.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime",
+        "MyBox",
+        "SonarUndDochSoFern.Input"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

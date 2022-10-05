@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace SonarUndDochSoFern.Player {
     sealed class ParticleComponent : MonoBehaviour {
@@ -8,8 +9,8 @@ namespace SonarUndDochSoFern.Player {
         public ParticleSystem sonarSystem = default;
         [SerializeField]
         public ParticleSystem paintSystem = default;
-        [SerializeField]
-        new Renderer renderer = default;
+        [SerializeField, FormerlySerializedAs("renderer")]
+        Renderer attachedRenderer = default;
         [SerializeField]
         Vector3 paintOffset = Vector3.zero;
         [SerializeField]
@@ -45,8 +46,8 @@ namespace SonarUndDochSoFern.Player {
                 sonarSystem.Play();
                 rigidbody.isKinematic = true;
             }
-            if (renderer) {
-                renderer.enabled = false;
+            if (attachedRenderer) {
+                attachedRenderer.enabled = false;
             }
             onCollision.Invoke(gameObject);
         }
