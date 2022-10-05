@@ -34,8 +34,6 @@ namespace SonarUndDochSoFern.Player {
         float airDistance;
         public bool isRunning => input.Sprint.phase == InputActionPhase.Performed && intendedMovement != Vector2.zero;
 
-        Vector2 position2D => new Vector2(character.transform.position.x, character.transform.position.z);
-
         public Movement(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input, CharacterController character) {
             this.avatar = avatar;
             this.settings = settings;
