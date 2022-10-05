@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: Assets/Scripts/Player/AvatarInput.cs
   wrapperClassName: AvatarInput
-  wrapperCodeNamespace: Runtime.Player
+  wrapperCodeNamespace: SonarUndDochSoFern.Player
