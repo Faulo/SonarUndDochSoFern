@@ -195,7 +195,7 @@ TextureImporter:
       213: -5461035025262068638
     second: WispySmoke01_8x8_63
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -212,6 +212,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
@@ -255,13 +256,15 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -314,6 +317,30 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1708,13 +1735,13 @@ TextureImporter:
       WispySmoke01_8x8_23: 160258583663661715
       WispySmoke01_8x8_33: -4447186133232039577
       WispySmoke01_8x8_21: -2354834800748329874
+      WispySmoke01_8x8_37: 4031493736860928847
       WispySmoke01_8x8_6: -1413561168548272490
-      WispySmoke01_8x8_14: -6226912001026866657
       WispySmoke01_8x8_38: -5423217496889652845
-      WispySmoke01_8x8_46: 5236781019244063269
+      WispySmoke01_8x8_14: -6226912001026866657
       WispySmoke01_8x8_60: 4112749153797204539
       WispySmoke01_8x8_17: -2027838347447640060
-      WispySmoke01_8x8_37: 4031493736860928847
+      WispySmoke01_8x8_46: 5236781019244063269
       WispySmoke01_8x8_50: 7759091588320072943
       WispySmoke01_8x8_19: 5256248678256519318
       WispySmoke01_8x8_51: 5258307964483991529
@@ -1740,7 +1767,6 @@ TextureImporter:
       WispySmoke01_8x8_28: -839931827697650837
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
