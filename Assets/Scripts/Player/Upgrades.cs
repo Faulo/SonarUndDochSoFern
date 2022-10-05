@@ -4,15 +4,13 @@ namespace SonarUndDochSoFern.Player {
     sealed class Upgrades : IUpdatable {
         readonly IAvatar avatar;
         readonly AvatarSettings settings;
-        readonly AvatarInput.PlayerActions input;
 
         Collider[] colliders;
         int colliderCount;
 
-        public Upgrades(IAvatar avatar, AvatarSettings settings, AvatarInput.PlayerActions input) {
+        public Upgrades(IAvatar avatar, AvatarSettings settings) {
             this.avatar = avatar;
             this.settings = settings;
-            this.input = input;
 
             colliders = new Collider[8];
         }

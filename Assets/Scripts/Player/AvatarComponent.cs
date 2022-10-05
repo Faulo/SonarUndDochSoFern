@@ -103,7 +103,7 @@ namespace SonarUndDochSoFern.Player {
             movement = new Movement(this, settings, input.Player, character);
             look = new Look(this, settings, input.Player, body, eyes, cinemachineCamera);
             sonar = new Sonar(this, settings, input.Player, eyes, globalVolume, sonarAudio);
-            upgrades = new Upgrades(this, settings, input.Player);
+            upgrades = new Upgrades(this, settings);
 
             onGainBurst += () => settings.onGainBurst.Invoke(gameObject);
             onGainBomb += () => settings.onGainBomb.Invoke(gameObject);
