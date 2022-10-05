@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Runtime {
+namespace SonarUndDochSoFern {
     [CreateAssetMenu]
-    public class InstantiateObject : ScriptableObject {
+    sealed class InstantiateObject : ScriptableObject {
         [SerializeField]
         GameObject prefab = default;
         [SerializeField]

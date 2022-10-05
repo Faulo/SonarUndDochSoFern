@@ -2,9 +2,9 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Runtime.Player {
+namespace SonarUndDochSoFern.Player {
     [CreateAssetMenu]
-    public class AvatarSettings : ScriptableObject {
+    sealed class AvatarSettings : ScriptableObject {
         [Header("Movement")]
         [SerializeField, Range(0, 100)]
         public float walkingSpeed = 5;

@@ -1,9 +1,9 @@
 using MyBox;
 using UnityEngine;
 
-namespace Runtime {
+namespace SonarUndDochSoFern {
     [CreateAssetMenu]
-    public class LoadScene : ScriptableObject {
+    sealed class LoadScene : ScriptableObject {
         [SerializeField]
         SceneReference scene = default;
 

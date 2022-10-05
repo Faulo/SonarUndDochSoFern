@@ -1,8 +1,8 @@
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
-namespace Runtime {
-    public class LevelComponent : MonoBehaviour {
+namespace SonarUndDochSoFern {
+    sealed class LevelComponent : MonoBehaviour {
         [SerializeField, Layer]
         int runtimeLayer = 0;
         void Awake() {

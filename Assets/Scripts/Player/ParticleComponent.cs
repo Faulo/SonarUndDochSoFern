@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Runtime.Player {
-    public class ParticleComponent : MonoBehaviour {
+namespace SonarUndDochSoFern.Player {
+    sealed class ParticleComponent : MonoBehaviour {
         [SerializeField]
         public ParticleSystem sonarSystem = default;
         [SerializeField]

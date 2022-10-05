@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Runtime.Player {
+namespace SonarUndDochSoFern.Player {
     public interface IAvatar {
         event Action<ControllerColliderHit> onControllerColliderHit;
         event Action onAmmoCountChanged;

@@ -2,9 +2,9 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Runtime {
+namespace SonarUndDochSoFern {
     [CreateAssetMenu]
-    public class PlaySFX : ScriptableObject {
+    sealed class PlaySFX : ScriptableObject {
         [SerializeField, Expandable]
         AudioSource prefab = default;
         [SerializeField, Expandable]

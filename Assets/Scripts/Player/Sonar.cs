@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-namespace Runtime.Player {
-    public class Sonar : IUpdatable, IDisposable {
+namespace SonarUndDochSoFern.Player {
+    sealed class Sonar : IUpdatable, IDisposable {
         readonly IAvatar avatar;
         readonly AvatarSettings settings;
         readonly AvatarInput.PlayerActions input;

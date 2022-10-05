@@ -3,8 +3,8 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Runtime.Player {
-    public class Look : IUpdatable, IDisposable {
+namespace SonarUndDochSoFern.Player {
+    sealed class Look : IUpdatable, IDisposable {
         readonly IAvatar avatar;
         readonly AvatarSettings settings;
         readonly AvatarInput.PlayerActions input;

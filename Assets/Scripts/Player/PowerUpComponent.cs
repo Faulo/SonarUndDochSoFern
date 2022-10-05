@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Runtime.Player {
-    public class PowerUpComponent : MonoBehaviour {
+namespace SonarUndDochSoFern.Player {
+    sealed class PowerUpComponent : MonoBehaviour {
         enum Type {
             Nothing,
             Burst,

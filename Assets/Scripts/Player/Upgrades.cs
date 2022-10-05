@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Runtime.Player {
-    public class Upgrades : IUpdatable {
+namespace SonarUndDochSoFern.Player {
+    sealed class Upgrades : IUpdatable {
         readonly IAvatar avatar;
         readonly AvatarSettings settings;
         readonly AvatarInput.PlayerActions input;

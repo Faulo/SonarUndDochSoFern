@@ -4,8 +4,8 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Runtime.Player {
-    public class AvatarComponent : MonoBehaviour, IAvatar {
+namespace SonarUndDochSoFern.Player {
+    sealed class AvatarComponent : MonoBehaviour, IAvatar {
         public enum UpdateMethod {
             Update,
             FixedUpdate,

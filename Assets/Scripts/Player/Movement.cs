@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Runtime.Player {
-    public class Movement : IUpdatable, IDisposable {
+namespace SonarUndDochSoFern.Player {
+    sealed class Movement : IUpdatable, IDisposable {
         enum JumpState {
             NotJumping,
             ShortJump,
