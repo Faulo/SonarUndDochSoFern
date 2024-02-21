@@ -98,7 +98,6 @@ namespace SonarUndDochSoFern.Player {
         [SerializeField]
         int m_ammoCount = 1;
 
-
         void Awake() {
             input = new AvatarInput();
             movement = new Movement(this, settings, input.Player, character);

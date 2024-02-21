@@ -93,16 +93,16 @@ namespace SonarUndDochSoFern.Player {
 
         [Header("Events")]
         [SerializeField]
-        public UnityEvent<GameObject> onGainBurst = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onGainBurst = new();
         [SerializeField]
-        public UnityEvent<GameObject> onGainBomb = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onGainBomb = new();
         [SerializeField]
-        public UnityEvent<GameObject> onJumpCountChanged = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onJumpCountChanged = new();
         [SerializeField]
-        public UnityEvent<GameObject> onAmmoCountChanged = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onAmmoCountChanged = new();
         [SerializeField]
-        public UnityEvent<GameObject> onStep = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onStep = new();
         [SerializeField]
-        public UnityEvent<GameObject> onTouchGoal = new UnityEvent<GameObject>();
+        public UnityEvent<GameObject> onTouchGoal = new();
     }
 }

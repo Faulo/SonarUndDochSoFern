@@ -15,6 +15,7 @@ namespace SonarUndDochSoFern {
             if (!prefab) {
                 return;
             }
+
             var instance = asChild
                 ? Instantiate(prefab, context.transform)
                 : Instantiate(prefab, context.transform.position, context.transform.rotation);

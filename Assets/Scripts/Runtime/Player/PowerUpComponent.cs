@@ -16,7 +16,7 @@ namespace SonarUndDochSoFern.Player {
         Type type = default;
 
         [SerializeField]
-        UnityEvent onCollect = new UnityEvent();
+        UnityEvent onCollect = new();
 
         public Vector3 position {
             get => transform.position;
@@ -43,6 +43,7 @@ namespace SonarUndDochSoFern.Player {
                 default:
                     throw new NotImplementedException();
             }
+
             onCollect.Invoke();
             Destroy(gameObject);
         }

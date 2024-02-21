@@ -48,6 +48,7 @@ namespace SonarUndDochSoFern.Player {
             if (burstParticles.TryGetComponent<ParticleComponent>(out var particles)) {
                 particles.paintSystem = paintParticles;
             }
+
             burstMain = burstParticles.main;
             burstEmission = burstParticles.emission;
 
@@ -90,6 +91,7 @@ namespace SonarUndDochSoFern.Player {
             if (!avatar.hasBurst) {
                 return;
             }
+
             burstEmission.enabled = true;
             burstParticles.Emit(settings.sonarBurstCount);
             sonarAudio.Play();
@@ -103,10 +105,12 @@ namespace SonarUndDochSoFern.Player {
             if (!avatar.hasBomb) {
                 return;
             }
+
             var special = UnityEngine.Object.Instantiate(settings.bombPrefab, avatar.position, avatar.rotation);
             if (special.TryGetComponent<ParticleComponent>(out var particles)) {
                 particles.paintSystem = paintParticles;
             }
+
             if (special.TryGetComponent<Rigidbody>(out var rigidbody)) {
                 rigidbody.velocity = avatar.velocity + (avatar.rotation * settings.specialEjectSpeed);
             }

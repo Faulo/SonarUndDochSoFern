@@ -66,6 +66,7 @@ namespace SonarUndDochSoFern.Player {
             if (jumpState != JumpState.NotJumping) {
                 gravity *= settings.jumpGravityMultiplier;
             }
+
             if (character.isGrounded && currentVelocity.y <= gravity) {
                 currentVelocity.y = gravity;
             } else {
@@ -82,6 +83,7 @@ namespace SonarUndDochSoFern.Player {
                 airDistance += deltaStep;
                 return;
             }
+
             stepDistance += airDistance;
             stepDistance += deltaStep;
             airDistance = 0;
@@ -99,6 +101,7 @@ namespace SonarUndDochSoFern.Player {
                 float forward = Vector3.Dot(targetVelocity.normalized, character.transform.forward);
                 targetVelocity *= settings.speedOverForward.Evaluate(forward);
             }
+
             targetMovement = new Vector2(targetVelocity.x, targetVelocity.z);
             if (targetMovement != Vector2.zero) {
                 targetMovement.Normalize();
@@ -112,6 +115,7 @@ namespace SonarUndDochSoFern.Player {
                     } else {
                         jumpCount = Mathf.Max(jumpCount, 1);
                     }
+
                     if (jumpCount < avatar.jumpCount && input.Jump.phase == InputActionPhase.Performed && !hasStartedJump) {
                         hasStartedJump = true;
                         jumpCount++;
@@ -121,18 +125,21 @@ namespace SonarUndDochSoFern.Player {
                         currentVelocity.y = settings.jumpStartSpeed.y;
                         currentVelocity.z += targetMovement.y * settings.jumpStartSpeed.x;
                     }
+
                     break;
                 case JumpState.ShortJump:
                     jumpTimer += Time.deltaTime;
                     if (jumpTimer >= settings.shortJumpInputDuration && input.Jump.phase == InputActionPhase.Performed) {
                         jumpState = JumpState.MediumJump;
                     }
+
                     break;
                 case JumpState.MediumJump:
                     jumpTimer += Time.deltaTime;
                     if (jumpTimer >= settings.mediumJumpInputDuration && input.Jump.phase == InputActionPhase.Performed) {
                         jumpState = JumpState.LongJump;
                     }
+
                     break;
                 case JumpState.LongJump:
                     jumpTimer += Time.deltaTime;
@@ -140,6 +147,7 @@ namespace SonarUndDochSoFern.Player {
                 default:
                     break;
             }
+
             if (jumpState != JumpState.NotJumping) {
                 float duration = jumpState switch {
                     JumpState.ShortJump => settings.shortJumpExecutionDuration,

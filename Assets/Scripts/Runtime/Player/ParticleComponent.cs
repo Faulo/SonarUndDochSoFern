@@ -16,9 +16,9 @@ namespace SonarUndDochSoFern.Player {
         [SerializeField]
         float killY = 0;
         [SerializeField]
-        UnityEvent<GameObject> onCollision = new UnityEvent<GameObject>();
+        UnityEvent<GameObject> onCollision = new();
 
-        List<ParticleCollisionEvent> events = new List<ParticleCollisionEvent>(1024);
+        List<ParticleCollisionEvent> events = new(1024);
         void OnParticleCollision(GameObject other) {
             int eventCount = sonarSystem.GetCollisionEvents(other, events);
             for (int i = 0; i < eventCount; i++) {
@@ -46,9 +46,11 @@ namespace SonarUndDochSoFern.Player {
                 sonarSystem.Play();
                 rigidbody.isKinematic = true;
             }
+
             if (attachedRenderer) {
                 attachedRenderer.enabled = false;
             }
+
             onCollision.Invoke(gameObject);
         }
     }
