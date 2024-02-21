@@ -6,10 +6,10 @@
         "Cinemachine",
         "Unity.ProBuilder",
         "Unity.TextMeshPro",
-        "Slothsoft.UnityExtensions.Runtime",
         "Unity.RenderPipelines.Universal.Runtime",
         "Unity.RenderPipelines.Core.Runtime",
-        "MyBox"
+        "MyBox",
+        "Slothsoft.UnityExtensions"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
